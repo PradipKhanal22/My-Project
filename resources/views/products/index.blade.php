@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@extends('layouts.alert')
 @section('title')Products
 @endsection
 @section('content')

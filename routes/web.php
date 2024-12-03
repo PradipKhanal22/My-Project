@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[PageController::class,'home'])->name('home');
 Route::get('/about',[PageController::class,'about'])->name('about');
 Route::get('/contact',[PageController::class,'contact'])->name('contact');
+Route::get('/contactinfo',[PageController::class,'contactinfo'])->name('contactinfo');
 
 Route::get('/categoryproduct/{id}',[PageController::class,'categoryproduct'])->name('categoryproduct');
 Route::get('/viewproduct/{id}',[PageController::class,'viewproduct'])->name(('viewproduct'));

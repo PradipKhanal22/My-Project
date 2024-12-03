@@ -21,6 +21,11 @@ class PageController extends Controller
     {
         return view('contact');
     }
+    public function contactinfo()
+    {
+        return view('contactinfo');
+    }
+
     public function categoryproduct($id)
     {
         $category = Category::find($id);

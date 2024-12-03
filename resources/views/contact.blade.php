@@ -8,7 +8,7 @@
         </p>
         <div class="flex justify-center space-x-4 mb-1">
             <a href="" class="bg-orange-500 text-white py-2 px-4 rounded-lg font-bold">GET IN TOUCH</a>
-            <a href="" class="text-gray-700 underline">PRESS CONTACT</a>
+            <a href="{{route('contactinfo')}}" class="text-gray-700 underline">PRESS CONTACT</a>
         </div>
     </div>
 </div>

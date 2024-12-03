@@ -82,7 +82,7 @@
     </nav>
     @yield('content')
     <footer class="mt-1">
-        <div class="grid md:grid-cols-4 sm:gird-cols-2 px-20 gap-10 bg-pink-300 py-10 mb-2">
+        <div class="grid md:grid-cols-3 sm:gird-cols-2 px-20 gap-20 bg-pink-300 py-10 mb-2">
             <div>
                 <h2 class = "text-2xl font-bold"> Quick Links </h2>
                 <ul>
@@ -91,7 +91,7 @@
                     <li><a href="{{ route('contact') }}" class="p-2 font-bold"> Contact </a>
                 </ul>
             </div>
-            <div class="font-semibold">
+            <div class="font-semibold mr-20">
                 <h2 class = "text-2xl font-bold"> Contact Us </h2>
                 <p><i class="ri-mail-line"></i> Email : retronepal74@gmail.com<br> <i class="ri-phone-fill"></i>Phone:
                     9765660867</p>
@@ -100,7 +100,7 @@
                     Nepal
                 </p>
             </div>
-            <div>
+            <div class="ml-20">
                 <h2 class = "text-2xl font-bold">Social Links</h2>
                 <ul>
                     <li><a href="https://www.facebook.com/search/top?q=retro%20kits%20nepal" class="font-bold"><i
@@ -113,7 +113,7 @@
             </div>
         </div>
         <div class = "bg-purple-700 text-white text-center py-5">
-            <p> @RetroKits Nepal &copy; 2021 All rights reserved</p>
+            <p> &copy; 2025 All rights reserved. This theme was developed by <a href="" class="font-bold text-black underline">Pradip Khanal</a>. Please refrain from using it for Commercial Purposes.</p>
         </div>
         </div>
     </footer>
