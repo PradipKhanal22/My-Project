@@ -15,22 +15,22 @@
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased bg-yellow-300">
+    <body class="font-sans antialiased bg-gray-500">
         {{-- @include('layouts.alert') --}}
         <div class="flex">
-            <div class="w-56 h-screen sticky top-0 bg-black shadow">
+            <div class="w-56 h-screen sticky top-0 bg-purple-500 shadow">
                 <img src="{{asset('image.png')}}" alt="" class="w-8/12 mx-auto mt-5 bg-white p-2 rounded-lg shadow-lg">
                 <div class="mt-5">
                     <a href="{{route('dashboard')}}" class="block p-3 text-white
-                     hover:bg-gray-300 font-bold">Dashboard</a>
-                    <a href="{{route('categories.index')}}" class="block p-3 text-white   hover:bg-gray-300 font-bold ">Category</a>
-                    <a href="{{route('products.index')}}" class="block p-3 text-white hover:bg-gray-300 font-bold">Product</a>
-                    <a href="{{route('orders.index')}}" class="block p-3 text-white hover:bg-gray-300 font-bold">Orders</a>
-                    <a href="" class="block p-3 text-white hover:bg-gray-300 font-bold"><i class="ri-user-line"></i>Users</a>
+                     hover:bg-black  font-bold">Dashboard</a>
+                    <a href="{{route('categories.index')}}" class="block p-3 text-white   hover:bg-black font-bold ">Category</a>
+                    <a href="{{route('products.index')}}" class="block p-3 text-white hover:bg-black font-bold">Products</a>
+                    <a href="{{route('orders.index')}}" class="block p-3 text-white hover:bg-black font-bold">Orders</a>
+                    <a href="{{route('users.index')}}" class="block p-3 text-white hover:bg-black font-bold">Users</a>
                     <form action="{{route('logout')}}" method="POST">
                         @csrf
                         <button type="submit" class="block w-full p-3 text-white
-                         hover:bg-gray-300 text-left"><i class="ri-logout-box-line"></i>Logout</button>
+                         hover:bg-black text-left"><i class="ri-logout-box-line"></i> Logout</button>
                     </form>
 
                 </div>

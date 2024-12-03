@@ -8,6 +8,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',[PageController::class,'home'])->name('home');
@@ -45,9 +46,16 @@ Route::get('/products/{id}edit',[ProductController::class,'edit'])-> name('produ
 Route::post('/products/{id}update',[ProductController::class,'update'])-> name('products.update');
 Route::get('/products/{id}destroy',[ProductController::class,'destroy'])-> name('products.destroy');
 
+// Users
+Route::get('/users',[UserController::class,'index'])-> name('users.index');
+
+
 //orders
 Route::get('/orders',[OrderController::class,'index'])-> name('orders.index');
 Route::get('/orders/{id}/{status}/status',[OrderController::class,'status'])-> name('orders.status');
+
+Route::get('orders/{id}/storeEsewa',[OrderController::class,'storeEsewa'])->name('orders.storeEsewa');
+
 
 
 Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('dashboard');

@@ -12,6 +12,7 @@
             </div>
         </div>
     </div>
+    
     <h1 class="text-blue-800 text-4xl text-center font-bold mt-10">Our Products</h1>
     <div class="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-10 md:px-20 sm:px-10 px-5 py-12 cursor-pointer">
         @foreach ($products as $product)

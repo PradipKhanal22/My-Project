@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -12,6 +14,8 @@ class DashboardController extends Controller
     {
         $totalproduct = Product::count();
         $totalcategories = Category::count();
-        return view('dashboard',compact('totalproduct','totalcategories'));
+        $totalorders = Order::count();
+        $totalusers = User::count();
+        return view('dashboard',compact('totalproduct','totalcategories','totalorders','totalusers'));
     }
 }

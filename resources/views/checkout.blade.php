@@ -33,7 +33,7 @@
     </div>
 </form>
 
-{{-- <form action="https://rc-epay.esewa.com.np/api/epay/main/v2/form" method="POST">
+<form action="https://rc-epay.esewa.com.np/api/epay/main/v2/form" method="POST">
     <input type="hidden" id="amount" name="amount" value="100" required>
     <input type="hidden" id="tax_amount" name="tax_amount" value ="0" required>
     <input type="hidden" id="total_amount" name="total_amount" value="110" required>
@@ -61,5 +61,5 @@
         document.getElementById('total_amount').value = "{{$total_amount}}";
         document.getElementById('transaction_uuid').value = "{{$transaction_uuid}}";
         document.getElementById('signature').value = "{{$signature}}";
-    </script> --}}
+    </script>
 @endsection
