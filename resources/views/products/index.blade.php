@@ -27,11 +27,11 @@
             <div class=" p-2">{{$product->description}}</div>
             <div class=" p-2">{{$product->category->name}}</div>
             <div class=" p-2">
-                <img src="{{asset('images/'.$product->photopath)}}" alt="" class="h-20 rounded-full">
+                <img src="{{asset('images/'.$product->photopath)}}" alt="" class="h-20 w-32 object-cover rounded-lg">
             </div>
-            <div class="p-2 flex justify-center space-x-2">
-                <a href="{{ route('products.edit', $product->id) }}" class="bg-blue-500 text-white px-2 py-1.5 rounded-lg">Edit</a>
-                <a href="{{ route('products.destroy', $product->id) }}" class="bg-red-700 text-white px-2 py-1.5 rounded-lg" onclick="return confirm('Are you sure you want to delete')">Delete</a>
+            <div class="p-2 grid gap-4">
+                <a href="{{ route('products.edit', $product->id) }}" class="bg-blue-500 text-white px-1.5 py-1.5 rounded-lg">Edit</a>
+                <a href="{{ route('products.destroy', $product->id) }}" class="bg-red-700  text-white px-2 py-1.5 rounded-lg" onclick="return confirm('Are you sure you want to delete')">Delete</a>
             </div>
         </div>
         @endforeach

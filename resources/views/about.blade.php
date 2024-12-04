@@ -1,56 +1,71 @@
-{{-- @extends('layouts.contactinfo') --}}
 @extends('layouts.master')
+
 @section('content')
-    <h1 class="text-5xl font-bold text-center mb-10">About RetroKits Nepal</h1>
-    <div class="grid grid-cols-2 gap-10 px-5 py-3">
-    <div class="mt-0 mb-2">
-    <section class=" bg-slate-600 rounded-lg">
-        <h2 class="text-3xl font-semibold text-center m-3">Welcome to RetroKits Nepal</h2>
-        <p class="text-xl text-justify ml-3 mr-3 mb-3 mt-1">At RetroKits Nepal, we are passionate about sports and the timeless apparel that has been an integral part of sports history. Our mission is to bring you the best in retro sportswear, celebrating the heritage and style of iconic sports moments.</p>
-    </section>
+<!-- Header Section -->
+<header class="relative h-screen bg-cover bg-center mt-2">
+<img src="{{ asset('image.png') }}" alt="Header Image" class="absolute inset-0 w-full h-full object-cover z-0">
+    <div class="absolute inset-0 bg-black opacity-30"></div>
+    <div class="relative container mx-auto h-full flex flex-col justify-center items-center text-center text-white">
+        <h1 class="text-5xl md:text-6xl font-extrabold text-yellow-500 drop-shadow-lg">About Us</h1>
+        <p class="text-lg md:text-xl mt-4 font-semibold">Explore our vision  RetroKits Nepal</p>
+        <a href="#mission" class="mt-6 px-8 py-3 bg-yellow-500 text-black font-bold rounded-full hover:bg-yellow-600 transition-all duration-300 shadow-lg transform hover:scale-105">LEARN MORE</a>
+    </div>
+</header>
 
-    <section class="mb-10 bg-cyan-200 rounded-lg">
-        <h2 class="text-3xl font-semibold text-center mb-5">Our Story</h2>
-        <p class="text-xl ml-3 mr-3 mb-3 mt-1 text-justify">RetroKits Nepal began as a small project driven by our love for classic sportswear. We realized there was a demand for high-quality, vintage-inspired sports kits that connect fans to the golden eras of their favorite sports. Over the years, we have grown into a trusted name, providing sports enthusiasts with authentic and stylish retro kits.</p>
-    </section>
-</div>
-<div class="mt-0 mb-2">
-    <section class="mb-10 bg-purple-500 rounded-lg">
-        <h2 class="text-3xl font-semibold text-center mb-5">Our Mission</h2>
-        <p class="text-xl ml-3 mr-3 mb-3 mt-1 text-justify">Our mission is to offer sports fans and athletes the opportunity to own a piece of sports history. We meticulously source and design our collections to ensure authenticity and quality, allowing you to relive the glory days of sports with every piece you wear.</p>
-    </section>
+<!-- Main Content -->
+<div class="container mx-auto py-16 px-6">
 
-    <section class="mb-10 bg-slate-500 rounded-lg">
-        <h2 class="text-3xl font-semibold text-center mb-5">What We Offer</h2>
-        <ul class="list-disc list-inside text-xl ml-3 mr-3 mb-3 mt-1 space-y-3">
-            <li><strong>Authentic Retro Sportswear:</strong> We provide a wide range of retro sports jerseys, training kits, and accessories that reflect the style and spirit of past decades.</li>
-            <li><strong>Quality Assurance:</strong> Each product is carefully crafted to meet the highest standards of quality, ensuring durability and comfort.</li>
-            <li><strong>Exclusive Collections:</strong> Discover limited edition collections that pay tribute to legendary teams, players, and moments in sports history.</li>
-            <li><strong>Community Engagement:</strong> Join our community of sports enthusiasts and share your love for the game through our social media channels and events.</li>
-        </ul>
-    </section>
-</div>
-<div class="mt-0 mb-2">
-    <section class="mb-10 bg-yellow-300 rounded-lg">
-        <h2 class="text-3xl font-semibold text-center mb-5">Our Values</h2>
-        <ul class="list-disc list-inside text-xl text-justify ml-3 mr-3 mb-3 mt-1 space-y-3">
-            <li><strong>Passion for Sports:</strong> We live and breathe sports. Our passion drives us to deliver the best products and services to our customers.</li>
-            <li><strong>Commitment to Quality:</strong> Quality is at the heart of everything we do. We strive to provide products that meet the highest standards.</li>
-            <li><strong>Customer Satisfaction:</strong> Our customers are our top priority. We are dedicated to ensuring a positive shopping experience for every customer.</li>
-            <li><strong>Heritage and Tradition:</strong> We honor the rich history of sports by offering products that celebrate its heritage and tradition.</li>
-        </ul>
-    </section>
-
-    <section class="text-center bg-purple-500 rounded-lg">
-        <h2 class="text-3xl font-semibold mb-5">Join the RetroKits Nepal Community</h2>
-        <p class="text-xl ml-3 mr-3 mb-3 mt-1 text-justify ">We invite you to explore our collections and join the RetroKits Nepal community. Follow us on social media to stay updated with our latest releases, special offers, and community events. Thank you for being a part of our journey and for sharing our love for sports and retro style.</p>
-        <p class="text-xl ml-3 mr-3 mb-3 mt-1">
-            <a href="https://www.facebook.com/RetroKitsNepal" target="_blank" class="text-indigo-800 hover:underline">Facebook</a> |
-            <a href="https://www.twitter.com/RetroKitsNepal" target="_blank" class="text-indigo-800 hover:underline">Twitter</a> |
-            <a href="https://www.instagram.com/RetroKitsNepal" target="_blank" class="text-indigo-800 hover:underline">Instagram</a>
+    <section id="about-retroKits" class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-6 text-indigo-700">About RetroKits Nepal</h2>
+        <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+            At RetroKits Nepal, we are passionate about sports and the timeless apparel that has been an integral part of sports history. Our mission is to bring you the best in retro sportswear, celebrating the heritage and style of iconic sports moments
         </p>
     </section>
-</div>
+
+    <!-- Our Mission -->
+    <section id="mission" class="bg-white text-gray-900 py-12 px-6 rounded-lg mb-16 shadow-md">
+        <h2 class="text-3xl font-bold mb-6 text-yellow-500 text-center">Our Mission</h2>
+        <p class="text-lg max-w-3xl mx-auto text-center">
+            Our mission is to offer sports fans and athletes the opportunity to own a piece of sports history. We meticulously source and design our collections to ensure authenticity and quality, allowing you to relive the glory days of sports with every piece you wear.
+        </p>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-choose-us" class="py-12 px-6 bg-gray-50 text-gray-800 rounded-lg mb-16 shadow-lg">
+        <h2 class="text-4xl font-bold mb-6 text-indigo-700 text-center">Why Choose Us?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg text-center">
+                <h3 class="text-2xl font-semibold mb-4 text-yellow-500">Expert Preference</h3>
+                <p class="text-gray-600">We provide a wide range of retro sports jerseys, training kits, and accessories that reflect the style and spirit of past decades.</.</p>
+            </div>
+            <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg text-center">
+                <h3 class="text-2xl font-semibold mb-4 text-yellow-500">Enthusiast Perspective</h3>
+                <p class="text-gray-600">As a collector of retro merchandise, RetroKits Nepal is a treasure trove! Their collection truly embodies the nostalgia of classic designs. From old-school sports kits to iconic vintage accessories, their offerings celebrate retro culture in a way that's unmatched in Nepal.</p>
+            </div>
+            <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg text-center">
+                <h3 class="text-2xl font-semibold mb-4 text-yellow-500"> Industry Observer Perspective
+                </h3>
+                <p class="text-gray-600">RetroKits Nepal has carved a unique market in Nepal by focusing on retro-themed sportswear and merchandise. Their approach to blending nostalgic designs with modern quality appeals to both older generations and younger audiences interested in vintage aesthetics</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Testimonials -->
+    <section id="testimonials" class="py-12 px-6 bg-gray-50 text-gray-900 rounded-lg mb-16">
+        <h2 class="text-3xl font-bold mb-6 text-yellow-500 text-center">What Our Customers Say</h2>
+        <div class="flex flex-wrap justify-center gap-10">
+            <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg max-w-md text-center">
+                <p class="text-gray-600 italic mb-4">"As a collector of retro merchandise, RetroKits Nepal is a treasure trove! Their collection truly embodies the nostalgia of classic designs. From old-school sports kits to iconic vintage accessories, their offerings celebrate retro culture in a way that's unmatched in Nepal."</p>
+                <p class="font-semibold text-indigo-700">Sarah & James</p>
+                <p class="text-gray-500">New York, USA</p>
+            </div>
+            <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg max-w-md text-center">
+                <p class="text-gray-600 italic mb-4">"RetroKits Nepal offers a wide range of vintage and retro-themed apparel and accessories. I love how they cater to niche audiences who appreciate retro styles. The quality of their products is impressive, and their attention to detail makes every purchase feel unique"</p>
+                <p class="font-semibold text-indigo-700">Anil & Priya</p>
+                <p class="text-gray-500">Kathmandu, Nepal</p>
+            </div>
+        </div>
+    </section>
 </div>
 
 @endsection
