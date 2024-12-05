@@ -16,11 +16,11 @@ class OrderController extends Controller
             'product_id' => 'required',
             'price' => 'required',
             'quantity' => 'required',
-            'payment_method' => 'required',
             'name' => 'required',
             'phone' => 'required',
             'address' => 'required',
         ]);
+        $data['payment_method']='COD';
         $data['user_id'] = auth()->user()->id;
         $data['status'] = 'Pending';
         Order::create($data);

@@ -27,6 +27,8 @@ Route::middleware('auth')->group(function(){
 
     //orders
     Route::post('orders/store',[OrderController::class,'store'])->name('orders.store');
+    Route::get('orders/{id}/storeEsewa',[OrderController::class,'storeEsewa'])->name('orders.storeEsewa');
+
 
 });
 
@@ -54,8 +56,6 @@ Route::get('/users',[UserController::class,'index'])-> name('users.index');
 //orders
 Route::get('/orders',[OrderController::class,'index'])-> name('orders.index');
 Route::get('/orders/{id}/{status}/status',[OrderController::class,'status'])-> name('orders.status');
-
-Route::get('orders/{id}/storeEsewa',[OrderController::class,'storeEsewa'])->name('orders.storeEsewa');
 
 
 
