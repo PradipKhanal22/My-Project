@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
     @include('layouts.alert')
-    <div class="mb-1 flex justify-between items-center px-5 bg-gradient-to-r from-orange-500 to-blue-400 text-white py-2">
+    <div class="flex justify-between items-center px-20 bg-orange-500 text-white py-2 h-10">
         <div>
-            <a href="" class="sm:block hidden ri-phone-fill"> 9765660867</a>
+            <a href="" class="sm:block hidden"><i class="fa fa-phone p-2 bg-blue-500 rounded-full" aria-hidden="true"></i> 9765660867</a>
         </div>
         <div>
             @auth
@@ -27,7 +27,7 @@
                             class="ri-logout-box-line"></i>Logout</button>
                 </form>
             @else
-                <a href="/login" class="p-2 relative text-black font-bold font-serif text-lg inline-block group">Login
+                <a href="/login" class=" relative text-black font-bold font-serif text-lg inline-block group"><i class="fa fa-user" aria-hidden="true"></i>
                     <span
                         class="absolute left-0 bottom-0 h-[2px] w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
                 </a>
@@ -35,8 +35,8 @@
         </div>
     </div>
     <nav
-        class="lg:flex hidden justify-between sticky top-0 items-center px-20 py-5 shadow-md bg-yellow-500 "style="z-index: 10000000">
-        <div class="px-2 py-2  flex justify-between items-center rounded-lg ">
+        class="lg:flex hidden justify-between sticky top-0 items-center h-14 px-14 py-5 shadow-lg bg-white ; "style="z-index: 10000000">
+        <div class="px-2 py-2  flex justify-between items-center rounded-lg">
             {{-- <img src="{{asset('logo.png')}}" alt="No images found" class="w-12 h-12"> --}}
             <a href="{{ route('home') }}" class="text-2xl font-bold font-serif px-2">RetroKits Nepal</a>
         </div>
@@ -82,7 +82,7 @@
     </nav>
     @yield('content')
     <footer class="mt-1">
-        <div class="grid md:grid-cols-3 sm:gird-cols-2 px-20 gap-20 bg-pink-300 py-10 mb-2">
+        <div class="grid md:grid-cols-3 sm:gird-cols-2 px-20 gap-20 bg-slate-200 py-10 ">
             <div>
                 <h2 class = "text-2xl font-bold"> Quick Links </h2>
                 <ul>
@@ -112,8 +112,8 @@
                 </ul>
             </div>
         </div>
-        <div class = "bg-purple-700 text-white text-center py-5">
-            <p> &copy; 2025 All rights reserved. This theme was developed by <a href="" class="font-bold text-black underline">Pradip Khanal</a>. Please refrain from using it for Commercial Purposes.</p>
+        <div class = "bg-black text-white text-center py-5">
+            <p> &copy; 2025 All rights reserved. This theme was developed by <a href="" class="font-bold text-orange-600 underline">Pradip Khanal</a>. Please refrain from using it for Commercial Purposes.</p>
         </div>
         </div>
     </footer>

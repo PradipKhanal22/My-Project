@@ -1,18 +1,19 @@
 @extends('layouts.master')
 @section('content')
-    <div class="mt-1">
-        <div class="relative w-full">
-            <img src="{{ asset('photo.jpg') }}" class=" w-full rounded-lg" alt="">
-            <div class="absolute inset-0 flex items-center max-w-md h-64">
-                <h2 class="text-black bg-white text-2xl font-bold p-4 rounded-xl">
-                    <div class=" mt-0">
-                        <h1 class="font-bold text-4xl font-serif">VISIT US IN KAWASOTI</h1>
-                    </div>
-                </h2>
+        <div class=" flex justify-between items-center h-screen px-20">
+            <div class="w-100 ">
+                <h1 class="font-bold text-5xl font-serif">Welcome to <span class="text-red-600">RetroKits Nepal</span></h1>
+                <p class="text-lg max-w-3xl mx-auto my-4">
+                    Our mission is to offer sports fans and athletes the opportunity to own a piece of sports history. We meticulously source and design our collections to ensure authenticity and quality, allowing you to relive the glory days of sports with every piece you wear.
+                </p>
+                <button class="px-4 py-2 bg-red-500 text-white rounded-lg font-bold hover:bg-slate-200 hover:text-red-500 cursor-pointer">Learn More</button>
+            </div>
+            <div class="w-100">
+            <img src="{{ asset('home.png') }}" class=" w-70 h-96 transform scale-x-[-1]" alt="">
             </div>
         </div>
-    </div>
-    
+
+
     <h1 class="text-blue-800 text-4xl text-center font-bold mt-10">Our Products</h1>
     <div class="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-10 md:px-20 sm:px-10 px-5 py-12 cursor-pointer">
         @foreach ($products as $product)
