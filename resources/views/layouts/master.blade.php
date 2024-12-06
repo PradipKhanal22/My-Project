@@ -13,32 +13,19 @@
     @include('layouts.alert')
     <div class="flex justify-between items-center px-20 bg-orange-500 text-white py-2 h-10">
         <div>
-            <a href="" class="sm:block hidden"><i class="fa fa-phone p-2 bg-blue-500 rounded-full" aria-hidden="true"></i> 9765660867</a>
+            <a href="" class="sm:block hidden"><i class="fa-solid fa-phone p-1 rounded-full bg-white" style="color: #003694;"></i> 9765660867</a>
         </div>
-        <div>
-            @auth
-                <a href="" class="text-black font-bold">Hi , <i
-                        class="ri-user-line"></i>{{ auth()->user()->name }}</a>
-                <a href="{{ route('mycart') }}" class="p-2 text-black font-bold"><i class="ri-shopping-cart-fill"></i>My
-                    Cart</a>
-                <form action="{{ route('logout') }}" method="post" class="inline">
-                    @csrf
-                    <button type="submit" class="p-2 font-bold text-black"><i
-                            class="ri-logout-box-line"></i>Logout</button>
-                </form>
-            @else
-                <a href="/login" class=" relative text-black font-bold font-serif text-lg inline-block group"><i class="fa fa-user" aria-hidden="true"></i>
-                    <span
-                        class="absolute left-0 bottom-0 h-[2px] w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                </a>
-            @endauth
+
+        <div class="gap-2">
+            <a href=""><i class="fa-brands fa-facebook p-1 rounded-full bg-white" style="color: #003185;"></i></a>
+            <a href=""><i class="fa-brands fa-instagram p-1 rounded-full bg-white" style="color: #013ca2;"></i></a>
         </div>
     </div>
     <nav
         class="lg:flex hidden justify-between sticky top-0 items-center h-14 px-14 py-5 shadow-lg bg-white ; "style="z-index: 10000000">
         <div class="px-2 py-2  flex justify-between items-center rounded-lg">
-            {{-- <img src="{{asset('logo.png')}}" alt="No images found" class="w-12 h-12"> --}}
-            <a href="{{ route('home') }}" class="text-2xl font-bold font-serif px-2">RetroKits Nepal</a>
+           <a href="{{ route('home') }}"> <img src="{{asset('logo1.png')}}" alt="No images found" class="w-20 h-14  px-2"> </a>
+            {{-- <a href="{{ route('home') }}" class="text-2xl font-bold font-serif px-2">RetroKits Nepal</a> --}}
         </div>
         <div>
             <a href="{{ route('home') }}" class="p-2 relative text-black font-bold text-lg inline-block group ">
@@ -54,6 +41,24 @@
                         class="absolute left-0 bottom-0 h-[2px] w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
                 </a>
             @endforeach
+
+                @auth
+                    <a href="" class="text-black font-bold">Hi , <i
+                            class="ri-user-line"></i>{{ auth()->user()->name }}</a>
+                    <a href="{{ route('mycart') }}" class="p-2 text-black font-bold"><i class="ri-shopping-cart-fill"></i>My
+                        Cart</a>
+                    <form action="{{ route('logout') }}" method="post" class="inline">
+                        @csrf
+                        <button type="submit" class="p-2 font-bold text-black"><i
+                                class="ri-logout-box-line"></i>Logout</button>
+                    </form>
+                @else
+                    <a href="/login" class=" relative bg-white px-2 py-1 rounded-full  font-bold font-serif text-lg inline-block group"><i class="fa-solid fa-user" style="color: #000000;"></i>
+                        <span
+                            class="absolute left-0 bottom-0 h-[2px] w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                @endauth
+
         </div>
     </nav>
     <nav
