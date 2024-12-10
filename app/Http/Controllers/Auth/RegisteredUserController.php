@@ -45,12 +45,12 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
-        // $emaildata = [
-        //     'name' => user->name,
-        // ];
-        // Mail::send('emails.welcomeEmail', $emaildata, function ($message) use () {
-        //     $message->to(user->email, user->name)->subject('Order Notification');
-        // });
+        $emaildata = [
+            'name' => $user->name,
+        ];
+        Mail::send('emails.welcomeEmail', $emaildata, function ($message) use ($user) {
+            $message->to($user->email, $user->name)->subject('Welcome Notification');
+        });
         return redirect(route('dashboard', absolute: false));
     }
 }

@@ -12,13 +12,15 @@
 <body>
     @include('layouts.alert')
     <div class="flex justify-between items-center px-16 bg-orange-500 text-white py-2 h-10">
-        <div>
+        <div class="flex">
             <a href="" class="sm:block hidden"><i class="fa-solid fa-phone p-1 rounded-full bg-white" style="color: #003694;"></i> 9765660867</a>
+            <a href="" class="sm:block hidden ml-2"><i class="fa-solid fa-envelope p-1 rounded-full bg-white" style="color: #0043b8;"></i> retronepal74@gmail.com</a>
         </div>
 
         <div class="gap-2">
             <a href=""><i class="fa-brands fa-facebook p-1 rounded-full bg-white" style="color: #003185;"></i></a>
-            <a href=""><i class="fa-brands fa-instagram p-1 rounded-full bg-white" style="color: #013ca2;"></i></a>
+            <a href=""><i class="fa-brands fa-instagram  p-1 rounded-full bg-white" style="color: #a70233;"></i></a>
+            <a href="" class=""><i class="fa-brands fa-twitter p-1 rounded-full bg-white" style="color: #0041b3;"></i></a>
         </div>
     </div>
     <nav

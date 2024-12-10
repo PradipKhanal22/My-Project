@@ -3,13 +3,13 @@
         <div class=" flex justify-between items-center h-screen px-20">
             <div class="w-100 ">
                 <h1 class="font-bold text-5xl font-serif">Welcome to <span class="text-red-600">RetroKits Nepal</span></h1>
-                <p class="text-lg max-w-3xl mx-auto my-4">
+                <p class=" font-semibold text-lg max-w-3xl mx-auto my-4 text-justify">
                     Our mission is to offer sports fans and athletes the opportunity to own a piece of sports history. We meticulously source and design our collections to ensure authenticity and quality, allowing you to relive the glory days of sports with every piece you wear.
                 </p>
                 <a class="px-4 py-2 bg-red-500 text-white rounded-lg font-bold hover:bg-slate-200 hover:text-red-500 cursor-pointer" href="{{route('about')}}">Learn More</a>
             </div>
             <div class="w-100">
-            <img src="{{ asset('home.png') }}" class=" w-70 h-96 transform scale-x-[-1]" alt="">
+            <img src="{{ asset('home.png') }}" class=" w-70 h-96 transform scale-x-[-1] hover:cursor-pointer" alt="">
             </div>
         </div>
 
