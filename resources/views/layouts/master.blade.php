@@ -62,6 +62,10 @@
                 @endauth
 
         </div>
+        <form action="{{route('search')}}" method="GET">
+            <input type="search" placeholder="Search here..." class="px-2 py-1.5 border rounded-lg" name="qry" value="{{request()->qry}}"cminlength="2" required>
+            <button type="submit" class="px-2 py-1.5 bg-blue-600 text-white rounded-lg">Search</button>
+        </form>
     </nav>
     <nav
         class="lg:hidden block  sticky top-0 items-center px-20 py-5 shadow-md bg-yellow-500 "style="z-index: 10000000">

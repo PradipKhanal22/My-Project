@@ -39,4 +39,10 @@ class PageController extends Controller
       ->limit(4)->get();
       return view('viewproduct',compact('product','relatedproducts'));
     }
+    public function search(Request $request)
+    {
+        $qry = $request->qry;
+        $products = Product::where('name','like','%'.$qry.'%')->get();
+        return view('search',compact('products','qry'));
+    }
 }
