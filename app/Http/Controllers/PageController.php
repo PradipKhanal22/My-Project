@@ -45,4 +45,10 @@ class PageController extends Controller
         $products = Product::where('name','like','%'.$qry.'%')->get();
         return view('search',compact('products','qry'));
     }
+    public function product()
+    {
+        $products = Product::all();
+        return view('product',compact('products'));
+
+    }
 }

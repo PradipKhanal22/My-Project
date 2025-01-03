@@ -18,6 +18,8 @@ Route::get('/contactinfo', [PageController::class, 'contactinfo'])->name('contac
 
 Route::get('/categoryproduct/{id}', [PageController::class, 'categoryproduct'])->name('categoryproduct');
 Route::get('/viewproduct/{id}', [PageController::class, 'viewproduct'])->name(('viewproduct'));
+Route::get('/allproduct', [PageController::class, 'product'])->name(('products'));
+
 
 // Serach
 Route::get('/search', [PageController::class, 'search'])->name('search');
