@@ -70,6 +70,9 @@ class OrderController extends Controller
             $emaildata = [
                 'name' => $order->user->name,
                 'status' => $status,
+                'product_name'=>'$product->Name',
+                'price'=>'$product->total_price',
+                'payment_method'=>'$product->payment_method',
             ];
             Mail::send('emails.orderemail', $emaildata, function ($message) use ($order) {
                 $message->to($order->user->email, $order->user->name)->subject('Order Notification');
