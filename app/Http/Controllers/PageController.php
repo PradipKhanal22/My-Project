@@ -37,7 +37,8 @@ class PageController extends Controller
       $product = Product::find($id);
       $relatedproducts = Product::where('category_id',$product->category_id)->where('id','!=',$id)
       ->limit(4)->get();
-      return view('viewproduct',compact('product','relatedproducts'));
+      $reviews = $product->reviews()->latest()->take(3)->get();
+      return view('viewproduct',compact('product','relatedproducts','reviews'));
     }
     public function search(Request $request)
     {
@@ -49,6 +50,6 @@ class PageController extends Controller
     {
         $products = Product::all();
         return view('product',compact('products'));
-
     }
+
 }

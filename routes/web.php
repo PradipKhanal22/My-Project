@@ -7,6 +7,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,9 @@ Route::middleware('auth')->group(function () {
     //orders
     Route::post('orders/store', [OrderController::class, 'store'])->name('orders.store');
     Route::get('orders/{id}/storeEsewa', [OrderController::class, 'storeEsewa'])->name('orders.storeEsewa');
+
+    // Review
+    Route::post('/review/store', [ReviewController::class, 'store'])->name('reviews.store');
 });
 
 Route::middleware(['auth', 'isadmin'])->group(function () {
@@ -60,9 +64,11 @@ Route::middleware(['auth', 'isadmin'])->group(function () {
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
     Route::get('/orders/{id}/{status}/status', [OrderController::class, 'status'])->name('orders.status');
 
-
-
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+
+    // Reviews
+    Route::get('/review', [ReviewController::class, 'index'])->name('reviews.index');
+    Route::delete('/review/{id}/destroy', [ReviewController::class, 'destroy'])->name('reviews.destroy');
 });
 
 Route::middleware('auth')->group(function () {
