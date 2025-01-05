@@ -19,8 +19,8 @@
         </div>
         <div class="border shadow-lg rounded-lg px-2 col-span-2">
             <input type="text" placeholder="Name" name="name" class="w-full border rounded-lg p-2" value="{{auth()->user()->name}}">
-            <input type="text" placeholder="Address" name="address" class="w-full border rounded-lg p-2 mt-2">
-            <input type="text" placeholder="Phone" name="phone" class="w-full border rounded-lg p-2 mt-2">
+            <input type="text" placeholder="Address" name="address" class="w-full border rounded-lg p-2 mt-2" value="{{auth()->user()->address}}">
+            <input type="text" placeholder="Phone" name="phone" class="w-full border rounded-lg p-2 mt-2" value="{{auth()->user()->phone}}">
 
         </div>
         <div class="col-span-1 border shadow-lg rounded-lg px-2 ">

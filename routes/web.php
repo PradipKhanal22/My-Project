@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\UserController;
+use App\Models\PurchaseHistory;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
@@ -30,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::get('mycart', [CartController::class, 'mycart'])->name('mycart');
     Route::delete('cart/destroy', [CartController::class, 'destroy'])->name('cart.destroy');
     Route::get('checkout/{id}/', [CartController::class, 'checkout'])->name('checkout');
+    Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 
     //orders
     Route::post('orders/store', [OrderController::class, 'store'])->name('orders.store');
@@ -37,6 +39,11 @@ Route::middleware('auth')->group(function () {
 
     // Review
     Route::post('/review/store', [ReviewController::class, 'store'])->name('reviews.store');
+
+    Route::get('/purchase-history', [ProductController::class, 'purchase_index'])->name('purchase.history');
+
+    // Route to handle storing a new purchase (this would typically be part of the purchase/checkout process)
+    Route::post('/store-purchase', [ProductController::class, 'purchase_store'])->name('store.purchase');
 });
 
 Route::middleware(['auth', 'isadmin'])->group(function () {

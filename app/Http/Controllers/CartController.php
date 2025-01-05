@@ -41,4 +41,17 @@ class CartController extends Controller
         }
         return view('checkout',compact('cart'));
     }
+    public function addToCart(Request $request)
+    {
+        // Assume $productId is passed from the request
+        $productId = $request->input('product_id');
+
+        // Logic to add the product to the cart (using session as an example)
+        $cart = session()->get('cart', []);
+        $cart[$productId] = isset($cart[$productId]) ? $cart[$productId] + 1 : 1;
+        session()->put('cart', $cart);
+
+        // Flash a success message
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
+    }
 }

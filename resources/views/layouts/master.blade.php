@@ -11,17 +11,36 @@
 
 <body>
     @include('layouts.alert')
-    <div class="flex justify-between items-center px-16 bg-orange-500 text-white py-2 h-10">
+    <div class="flex justify-between items-center px-16 bg-orange-500 text-white py-4 h-10">
         <div class="flex">
             <a href="" class="sm:block hidden"><i class="fa-solid fa-phone p-1 rounded-full bg-white" style="color: #003694;"></i> 9765660867</a>
             <a href="" class="sm:block hidden ml-2"><i class="fa-solid fa-envelope p-1 rounded-full bg-white" style="color: #0043b8;"></i> retronepal74@gmail.com</a>
         </div>
+            <div>
+            @auth
+                    <a href="" class="text-black font-bold">Hi , <i
+                            class="ri-user-line"></i>{{ auth()->user()->name }}</a>
+                    <a href="{{ route('mycart') }}" class="p-2 text-black font-bold"><i class="ri-shopping-cart-fill"></i>My
+                        Cart</a>
+                    <a href="{{route('purchase.history')}}" class="px-2 py-1.5 bg-blue-600 text-white rounded-lg">My History</a>
+                    <form action="{{ route('logout') }}" method="post" class="inline">
+                        @csrf
+                        <button type="submit" class="p-2 font-bold text-black"><i
+                                class="ri-logout-box-line"></i>Logout</button>
+                    </form>
+                @else
+                    <a href="/login" class=" relative bg-black px-2  rounded-full  font-bold font-serif text-lg inline-block group"><i class="fa-solid fa-user" style="color: #ffffff;"></i>
+                        <span
+                            class="absolute left-0 bottom-0 h-[2px] w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                @endauth
+            </div>
 
-        <div class="gap-2">
+        {{-- <div class="gap-2">
             <a href=""><i class="fa-brands fa-facebook p-1 rounded-full bg-white" style="color: #003185;"></i></a>
             <a href=""><i class="fa-brands fa-instagram  p-1 rounded-full bg-white" style="color: #a70233;"></i></a>
             <a href="" class=""><i class="fa-brands fa-twitter p-1 rounded-full bg-white" style="color: #0041b3;"></i></a>
-        </div>
+        </div> --}}
     </div>
     <nav
         class="lg:flex hidden justify-between sticky top-0 items-center h-14 px-12 py-5 shadow-lg bg-white ; "style="z-index: 10000000">
@@ -44,27 +63,12 @@
                 </a>
             @endforeach
 
-                @auth
-                    <a href="" class="text-black font-bold">Hi , <i
-                            class="ri-user-line"></i>{{ auth()->user()->name }}</a>
-                    <a href="{{ route('mycart') }}" class="p-2 text-black font-bold"><i class="ri-shopping-cart-fill"></i>My
-                        Cart</a>
-                    <form action="{{ route('logout') }}" method="post" class="inline">
-                        @csrf
-                        <button type="submit" class="p-2 font-bold text-black"><i
-                                class="ri-logout-box-line"></i>Logout</button>
-                    </form>
-                @else
-                    <a href="/login" class=" relative bg-black px-2 py-1 rounded-full  font-bold font-serif text-lg inline-block group"><i class="fa-solid fa-user" style="color: #ffffff;"></i>
-                        <span
-                            class="absolute left-0 bottom-0 h-[2px] w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                @endauth
+
 
         </div>
         <form action="{{route('search')}}" method="GET">
             <input type="search" placeholder="Search here..." class="px-2 py-1.5 border rounded-lg" name="qry" value="{{request()->qry}}"cminlength="2" required>
-            <button type="submit" class="px-2 py-1.5 bg-blue-600 text-white rounded-lg">Search</button>
+            <button type="submit" class="px-2 py-1.5 bg-blue-600 text-white rounded-lg"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
         </form>
     </nav>
     <nav

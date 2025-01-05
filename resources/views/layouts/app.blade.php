@@ -67,6 +67,34 @@
 
         </div>
     </div>
+    <div id="notification" class="hidden fixed top-4 right-4 bg-green-500 text-white py-3 px-6 rounded shadow-lg z-50">
+        Product added to cart successfully!
+    </div>
+
+    <script>
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `fixed top-4 right-4 py-3 px-6 rounded shadow-lg z-50 ${
+                type === 'success' ? 'bg-green-500' : 'bg-red-500'
+            } text-white`;
+            notification.classList.remove('hidden');
+
+            // Automatically hide the notification after 3 seconds
+            setTimeout(() => {
+                notification.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Trigger the notification if a session message is available
+        @if (session('success'))
+            showNotification("{{ session('success') }}", 'success');
+        @endif
+        @if (session('error'))
+            showNotification("{{ session('error') }}", 'error');
+        @endif
+    </script>
+
 </body>
 
 </html>
