@@ -13,9 +13,9 @@
 
         <h3 style="color: #333; font-size: 18px; margin-bottom: 10px;">Order Details:</h3>
         <p style="font-size: 16px; color: #555; line-height: 1.6;">
-            <strong>Package Name:</strong> {{ $product->Name }} <br>
-            <strong>Total Price:</strong> ${{ number_format($product->total_price, 2) }} <br>
-            <strong>Payment Method:</strong> {{ $product->payment_method }}
+            <strong>Product Name:</strong> {{ $product_name }} <br>
+            <strong>Total Price:</strong> {{ $price }} <br>
+            <strong>Payment Method:</strong> {{ $payment_method }}
         </p>
 
         <hr style="border: 0; border-top: 1px solid #ddd; margin: 20px 0;">
