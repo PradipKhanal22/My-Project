@@ -40,10 +40,7 @@ Route::middleware('auth')->group(function () {
     // Review
     Route::post('/review/store', [ReviewController::class, 'store'])->name('reviews.store');
 
-    Route::get('/purchase-history', [ProductController::class, 'purchase_index'])->name('purchase.history');
-
-    // Route to handle storing a new purchase (this would typically be part of the purchase/checkout process)
-    Route::post('/store-purchase', [ProductController::class, 'purchase_store'])->name('store.purchase');
+    Route::get('/purchase-history', [OrderController::class, 'historyindex'])->name('purchase.history');
 });
 
 Route::middleware(['auth', 'isadmin'])->group(function () {

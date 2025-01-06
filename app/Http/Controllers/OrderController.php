@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
@@ -80,5 +81,11 @@ class OrderController extends Controller
             });
             return redirect('/')->with('success', 'Order has been placed successfully');
         }
+    }
+
+    public function historyindex()
+    {
+        $orders = Order::where('user_id',auth()->id());
+        return view('purchased_history', compact('orders'));
     }
 }

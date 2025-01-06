@@ -11,7 +11,7 @@
 
 <body>
     @include('layouts.alert')
-    <div class="flex justify-between items-center px-16 bg-orange-500 text-white py-4 h-10">
+    <div class="flex justify-between items-center px-16 bg-orange-500 text-white py-4 h-10 sticky top-0" style="z-index: 10">
         <div class="flex">
             <a href="" class="sm:block hidden"><i class="fa-solid fa-phone p-1 rounded-full bg-white" style="color: #003694;"></i> 9765660867</a>
             <a href="" class="sm:block hidden ml-2"><i class="fa-solid fa-envelope p-1 rounded-full bg-white" style="color: #0043b8;"></i> retronepal74@gmail.com</a>
@@ -20,9 +20,21 @@
             @auth
                     <a href="" class="text-black font-bold">Hi , <i
                             class="ri-user-line"></i>{{ auth()->user()->name }}</a>
+
+                    <span class="relative">
                     <a href="{{ route('mycart') }}" class="p-2 text-black font-bold"><i class="ri-shopping-cart-fill"></i>My
                         Cart</a>
-                    <a href="{{route('purchase.history')}}" class="px-2 py-1.5 bg-blue-600 text-white rounded-lg">My History</a>
+                        <span class="absolute -top2 right-0 bg-red-600 text-white rounded-full">
+                            @auth
+                                @php
+                                    $no_of_items = \App\Models\Cart::where('user_id',auth()->id())->Count();
+                                @endphp
+                                {{$no_of_items}}
+                                @else
+                                0
+                            @endauth
+                        </span>
+                    </span>
                     <form action="{{ route('logout') }}" method="post" class="inline">
                         @csrf
                         <button type="submit" class="p-2 font-bold text-black"><i
@@ -43,7 +55,7 @@
         </div> --}}
     </div>
     <nav
-        class="lg:flex hidden justify-between sticky top-0 items-center h-14 px-12 py-5 shadow-lg bg-white ; "style="z-index: 10000000">
+        class="lg:flex hidden justify-between  items-center h-14 px-12 py-5 shadow-lg bg-white ; "style="z-index: 10">
         <div class="px-2 py-2  flex justify-between items-center rounded-lg">
            <a href="{{ route('home') }}"> <img src="{{asset('logo1.png')}}" alt="No images found" class="w-20 h-14  px-2"> </a>
             {{-- <a href="{{ route('home') }}" class="text-2xl font-bold font-serif px-2">RetroKits Nepal</a> --}}

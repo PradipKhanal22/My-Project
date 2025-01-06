@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+<a href="">My History</a>
     <h1 class="text-4xl font-bold text-black  text-center py-20">My Cart</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10 px-5 md:px-20">
         @foreach ($carts as $cart)
