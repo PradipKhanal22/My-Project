@@ -22,7 +22,7 @@
                                 <h5 class="card-title">Product Name: <span class="text-red-500"> {{ $wishlist->product->name }}</span></h5>
                                 <p class="card-text">Description: {{ $wishlist->product->description ?? 'No description available.' }}
                                 </p>
-                                <p class="text-muted">Price: <span class="text-yellow-500"> ${{ number_format($wishlist->product->price, 2) }}</span></p>
+                                <p class="text-muted">Price: <span class="text-yellow-500"> Rs. {{ number_format($wishlist->product->price, 2) }}</span></p>
                             </div>
                             <div class=" flex card-footer d-flex justify-content-between align-items-center mb-4 ml-2 mt-2">
                                 <a href="{{ route('products.index', $wishlist->product->id) }}"
