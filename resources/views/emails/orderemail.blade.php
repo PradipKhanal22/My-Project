@@ -28,7 +28,7 @@
     </div>
 
     <footer style="text-align: center; margin-top: 20px; font-size: 14px; color: #888;">
-        <p>© 2024 YatraSathi. All rights reserved.</p>
+        <p>© 2024 RetroKits Nepal. All rights reserved.</p>
         <p>Follow us: <a href="" style="color: #2c7bf7; text-decoration: none;">Twitter</a> | <a href="" style="color: #2c7bf7; text-decoration: none;">Facebook</a></p>
     </footer>
 </div>

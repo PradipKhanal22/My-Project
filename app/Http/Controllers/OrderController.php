@@ -85,7 +85,8 @@ class OrderController extends Controller
 
     public function historyindex()
     {
-        $orders = Order::where('user_id',auth()->id());
+        $user = Auth::user();
+        $orders = Order::where('user_id',$user->id)->with('product')->get();
         return view('purchased_history', compact('orders'));
     }
 }

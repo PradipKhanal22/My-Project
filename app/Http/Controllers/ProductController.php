@@ -79,40 +79,8 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success', 'Product Deleted Successfully.');
     }
 
-    public function storePurchase(Request $request)
-    {
-        // Validate purchase details (e.g., product_id, quantity, etc.)
-        $validated = $request->validate([
-            'product_id' => 'required|exists:products,id',
-            'quantity' => 'required|integer|min:1',
-        ]);
 
-        $product = Product::findOrFail($validated['product_id']);
-        $user = Auth::user();
-        $totalPrice = $product->price * $validated['quantity'];
 
-        // Log purchase history
-        PurchaseHistory::create([
-            'user_id' => $user->id,
-            'product_id' => $product->id,
-            'quantity' => $validated['quantity'],
-            'price' => $totalPrice,
-            'purchased_at' => now(),
-        ]);
 
-        // Additional logic for completing the purchase, like deducting stock, etc.
-    }
 
-    public function viewPurchaseHistory()
-    {
-        $user = Auth::user();
-        $purchaseHistory = PurchaseHistory::where('user_id', $user->id)->with('product')->orderBy('purchased_at', 'desc')->get();
-        return view('purchase_history', compact('purchaseHistory'));
-    }
-    public function purchase_index()
-    {
-        $user = Auth::user();
-        $purchaseHistory = PurchaseHistory::where('user_id', $user->id)->with('product')->orderBy('purchased_at', 'desc')->get();
-        return view('purchased_history');
-    }
 }

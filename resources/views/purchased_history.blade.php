@@ -30,7 +30,7 @@
             </div>
 
             <!-- Action Buttons -->
-            <div class="flex justify-between items-center p-2 bg-gray-100">
+            {{-- <div class="flex justify-between items-center p-2 bg-gray-100">
                 <a href="{{ route('orders.status', [$order->id, 'Pending']) }}" class="bg-blue-600 text-white text-sm py-2 px-2 rounded-lg shadow hover:bg-blue-700 flex items-center w-full sm:w-auto">
                     <i class="ri-time-line mr-2"></i> Pending
                 </a>
@@ -40,7 +40,7 @@
                 <a href="{{ route('orders.status', [$order->id, 'Delivered']) }}" class="bg-orange-600 text-white text-sm py-2 px-2 rounded-lg shadow hover:bg-orange-700 flex items-center w-full sm:w-auto">
                     <i class="ri-checkbox-circle-line mr-2"></i> Delivered
                 </a>
-            </div>
+            </div> --}}
         </div>
         @endforeach
     </div>

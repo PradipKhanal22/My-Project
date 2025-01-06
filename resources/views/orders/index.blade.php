@@ -25,6 +25,7 @@
                 <p class="text-base font-bold text-gray-800 flex items-center"><i class="ri-user-line text-blue-500 mr-2"></i> <strong>Customer:</strong> {{ $order->name }}</p>
                 <p class="text-base text-gray-600 flex items-center"><i class="ri-map-pin-line text-red-500 mr-2"></i> <strong>Address:</strong> {{ $order->address }}</p>
                 <p class="text-base text-gray-600 flex items-center"><i class="ri-phone-line text-green-500 mr-2"></i> <strong>Phone:</strong> {{ $order->phone }}</p>
+                <p class="text-base text-gray-600 flex items-center"><i class="fa-solid fa-cart-shopping mr-2"></i><strong>  Quantity:</strong> {{ $order->quantity }}</p>
                 <p class="text-base text-gray-600 flex items-center"><i class="ri-wallet-line text-yellow-500 mr-2"></i> <strong>Total Price:</strong>
                     <span class="text-green-600 font-bold">Rs. {{ number_format($order->quantity * $order->price, 2) }}</span>
                 </p>

@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WishlistController;
 use App\Models\PurchaseHistory;
 use Illuminate\Support\Facades\Route;
 
@@ -39,8 +40,12 @@ Route::middleware('auth')->group(function () {
 
     // Review
     Route::post('/review/store', [ReviewController::class, 'store'])->name('reviews.store');
-
     Route::get('/purchase-history', [OrderController::class, 'historyindex'])->name('purchase.history');
+
+    // Wishlists
+    Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
+    Route::post('/wishlist', [WishlistController::class, 'store'])->name('wishlist.store');
+    Route::delete('/wishlist/{id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
 });
 
 Route::middleware(['auth', 'isadmin'])->group(function () {
@@ -59,6 +64,11 @@ Route::middleware(['auth', 'isadmin'])->group(function () {
     Route::get('/products/{id}edit', [ProductController::class, 'edit'])->name('products.edit');
     Route::post('/products/{id}update', [ProductController::class, 'update'])->name('products.update');
     Route::get('/products/{id}destroy', [ProductController::class, 'destroy'])->name('products.destroy');
+
+    // routes/web.php
+
+Route::get('/products/chart', [ProductController::class, 'chart']);
+
 
     // Users
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
