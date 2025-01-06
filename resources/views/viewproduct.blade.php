@@ -28,7 +28,7 @@
         <form action="{{ route('wishlist.store') }}" method="POST">
             @csrf
             <input type="hidden" name="product_id" value="{{ $product->id }}">
-            <button type="submit">Add to Wishlist</button>
+            <button type="submit" class="mt-6 bg-gradient-to-r from-red-500 to-yellow-400 text-white font-bold px-5 py-2 rounded-lg shadow-lg hover:from-yellow-400 hover:to-red-500 transition duration-300">Add to Wishlist</button>
         </form>
 
     </div>
