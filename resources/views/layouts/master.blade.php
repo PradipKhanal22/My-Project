@@ -24,7 +24,7 @@
                     <span class="relative">
                     <a href="{{ route('mycart') }}" class="p-2 text-black font-bold"><i class="ri-shopping-cart-fill"></i>My
                         Cart</a>
-                        <span class="absolute -top2 right-0 bg-red-600 text-white rounded-full">
+                        <span class="absolute -top2 right-0 bg-red-600 text-white rounded-full px-0.5">
                             @auth
                                 @php
                                     $no_of_items = \App\Models\Cart::where('user_id',auth()->id())->Count();
@@ -35,6 +35,8 @@
                             @endauth
                         </span>
                     </span>
+                    <a href="{{route('wishlist.index')}}" class="p-2 relative text-black font-bold text-lg inline-block group"><i class="fa-regular fa-heart "></i> My Wishlist</a>
+
                     <form action="{{ route('logout') }}" method="post" class="inline">
                         @csrf
                         <button type="submit" class="p-2 font-bold text-black"><i
@@ -78,7 +80,6 @@
 
 
         </div>
-        <a href="{{route('wishlist.index')}}" class="p-2 relative text-black font-bold text-lg inline-block group"><i class="fa-regular fa-heart "></i> My Wishlist</a>
 
         <form action="{{route('search')}}" method="GET">
             <input type="search" placeholder="Search here..." class="px-2 py-1.5 border rounded-lg" name="qry" value="{{request()->qry}}"cminlength="2" required>
