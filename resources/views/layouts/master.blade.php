@@ -24,7 +24,7 @@
                     <span class="relative">
                     <a href="{{ route('mycart') }}" class="p-2 text-black font-bold"><i class="ri-shopping-cart-fill"></i>My
                         Cart</a>
-                        <span class="absolute -top2 right-0 bg-red-600 text-white rounded-full px-0.5">
+                        <span class="absolute top-[-8px] right-[-6px] w-5 h-5 text-xs flex items-center justify-center bg-red-600 text-white rounded-full px-0.5">
                             @auth
                                 @php
                                     $no_of_items = \App\Models\Cart::where('user_id',auth()->id())->Count();
@@ -85,6 +85,11 @@
             <input type="search" placeholder="Search here..." class="px-2 py-1.5 border rounded-lg" name="qry" value="{{request()->qry}}"cminlength="2" required>
             <button type="submit" class="px-2 py-1.5 bg-blue-600 text-white rounded-lg"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
         </form>
+        @auth
+            <a href="{{ route('userprofile.edit') }}" class="block w-10 h-10">
+                <img src="{{ asset('avatar.jpg') }}" alt="User Avatar" class="w-10 h-10 rounded-full shadow-lg">
+            </a>
+            @endauth
     </nav>
     <nav
         class="lg:hidden block  sticky top-0 items-center px-20 py-5 shadow-md bg-yellow-500 "style="z-index: 10000000">

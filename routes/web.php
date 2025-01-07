@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\WishlistController;
 use App\Models\PurchaseHistory;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +47,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
     Route::post('/wishlist', [WishlistController::class, 'store'])->name('wishlist.store');
     Route::delete('/wishlist/{id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
+
+    // User
+    Route::get('/userprofile/edit', [UserProfileController::class, 'edit'])->name('userprofile.edit');
+    Route::post('/userprofile/update', [UserProfileController::class, 'update'])->name('userprofile.update');
 });
 
 Route::middleware(['auth', 'isadmin'])->group(function () {
