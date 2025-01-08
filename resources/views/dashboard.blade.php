@@ -85,7 +85,33 @@
                 </div>
             </div>
         </div>
+        <div>
+            <canvas id="myChart"></canvas>
+            <p cclass="ml-14">Category wise Product</p>
+        </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: {!! json_encode($allcategories) !!},
+      datasets: [{
+        label: '# of products',
+        data: {!! json_encode($categoryproduct) !!},
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+
+      }
+    }
+  });
+</script>
 
 @endsection

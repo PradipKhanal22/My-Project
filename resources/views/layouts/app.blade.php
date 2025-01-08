@@ -11,10 +11,12 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
 
     <!-- Vite -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -25,35 +27,43 @@
         <!-- Sidebar -->
         <aside class="w-56 h-screen sticky top-0 bg-gradient-to-b from-purple-600 to-purple-500 shadow-lg">
             <div class="flex flex-col items-center py-5">
-                <img src="{{ asset('image.png') }}" alt="Logo" class="w-20al h-20 bg-white p-2 rounded-full shadow-lg">
+                <img src="{{ asset('image.png') }}" alt="Logo"
+                    class="w-20al h-20 bg-white p-2 rounded-full shadow-lg">
                 <h2 class="text-white font-bold mt-4 text-lg">Admin Panel</h2>
             </div>
             <nav class="mt-6 space-y-2">
-                <a href="{{ route('dashboard') }}" class="p-3 text-white hover:bg-gray-600 flex items-center transition duration-200 ease-in-out
-    @if(Route::is('dashboard')) bg-gray-600 @endif">
+                <a href="{{ route('dashboard') }}"
+                    class="p-3 text-white hover:bg-gray-600 flex items-center transition duration-200 ease-in-out
+    @if (Route::is('dashboard')) bg-gray-600 @endif">
                     <i class="ri-dashboard-line mr-2"></i> Dashboard
                 </a>
-                <a href="{{ route('categories.index') }}" class="p-3 text-white hover:bg-gray-600 flex items-center transition duration-200 ease-in-out
-    @if(Route::is('categories.index')) bg-gray-600 @endif">
+                <a href="{{ route('categories.index') }}"
+                    class="p-3 text-white hover:bg-gray-600 flex items-center transition duration-200 ease-in-out
+    @if (Route::is('categories.index')) bg-gray-600 @endif">
                     <i class="ri-folder-line mr-2"></i> Categories
                 </a>
-                <a href="{{ route('products.index') }}" class="p-3 text-white hover:bg-gray-600 flex items-center transition duration-200 ease-in-out
-    @if(Route::is('products.index')) bg-gray-600 @endif">
+                <a href="{{ route('products.index') }}"
+                    class="p-3 text-white hover:bg-gray-600 flex items-center transition duration-200 ease-in-out
+    @if (Route::is('products.index')) bg-gray-600 @endif">
                     <i class="ri-shopping-bag-2-line mr-2"></i> Products
                 </a>
-                <a href="{{ route('orders.index') }}" class="p-3 text-white hover:bg-gray-600 flex items-center transition duration-200 ease-in-out
-    @if(Route::is('orders.index')) bg-gray-600 @endif">
+                <a href="{{ route('orders.index') }}"
+                    class="p-3 text-white hover:bg-gray-600 flex items-center transition duration-200 ease-in-out
+    @if (Route::is('orders.index')) bg-gray-600 @endif">
                     <i class="ri-shopping-cart-line mr-2"></i> Orders
                 </a>
-                <a href="{{ route('reviews.index') }}" class="p-3 text-white hover:bg-gray-600 flex items-center transition duration-200 ease-in-out
-    @if(Route::is('reviews.index')) bg-gray-600 @endif">
+                <a href="{{ route('reviews.index') }}"
+                    class="p-3 text-white hover:bg-gray-600 flex items-center transition duration-200 ease-in-out
+    @if (Route::is('reviews.index')) bg-gray-600 @endif">
                     <i class="ri-chat-check-line mr-2"></i> Reviews
                 </a>
-                <a href="{{ route('users.index') }}" class="p-3 text-white hover:bg-gray-600 flex items-center transition duration-200 ease-in-out
-    @if(Route::is('users.index')) bg-gray-600 @endif">
+                <a href="{{ route('users.index') }}"
+                    class="p-3 text-white hover:bg-gray-600 flex items-center transition duration-200 ease-in-out
+    @if (Route::is('users.index')) bg-gray-600 @endif">
                     <i class="ri-user-line mr-2"></i> Users
                 </a>
-                <form action="{{ route('logout') }}" method="POST" class=" p-3 text-white hover:bg-red-700 flex items-center text-left transition duration-200 ease-in-out">
+                <form action="{{ route('logout') }}" method="POST"
+                    class=" p-3 text-white hover:bg-red-700 flex items-center text-left transition duration-200 ease-in-out">
                     @csrf
                     <button type="submit" class="w-full flex items-center">
                         <i class="ri-logout-box-line text-red-900 mr-2"></i> Logout

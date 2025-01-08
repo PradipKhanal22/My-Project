@@ -20,23 +20,14 @@ class DashboardController extends Controller
         $deliveredorders = Order::where('status','Delivered')->count();
         $pendingorders = Order::where('status','Pending')->count();
 
-        // $products = Product::all();
-        // $productNames = $products->pluck('name')->toArray();
-        // $productQuantities = $products->pluck('quantity')->toArray();
-
-        return view('dashboard',compact('totalproduct','totalcategories','totalorders','totalusers','deliveredorders','pendingorders'));
+        // For Products
+        $allcategories = Category::all();
+        $categoryproduct = [];
+        foreach($allcategories as $category)
+        {
+            $categoryproduct[] = Product::where('category_id',$category->id)->count();
+        }
+        $allcategories = $allcategories->pluck('name')->toArray();
+        return view('dashboard',compact('totalproduct','totalcategories','totalorders','totalusers','deliveredorders','pendingorders','allcategories','categoryproduct'));
     }
-
-    // public function chart()
-    // {
-    //     // Fetch product data
-    //     $products = Product::all();
-    //     $productNames = $products->pluck('name')->toArray();
-    //     $productQuantities = $products->pluck('quantity')->toArray();
-
-    //     return view('products.chart', [
-    //         'productNames' => $productNames,
-    //         'productQuantities' => $productQuantities,
-    //     ]);
-    // }
-}
+}                 
