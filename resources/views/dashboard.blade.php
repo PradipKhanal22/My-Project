@@ -85,10 +85,23 @@
                 </div>
             </div>
         </div>
+        {{-- <div class="px-6 py-8 bg-pink-500 text-white flex items-center rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition duration-300 cursor-pointer">
+            <div class="flex items-center space-x-4">
+                <i class="ri-money-dollar-circle-line text-5xl"></i>
+                <div>
+                    <h2 class="text-lg font-semibold">Total Reviews</h2>
+                    <p class="text-3xl font-bold">{{$deliveredorders}}</p>
+                </div>
+            </div>
+        </div> --}}
         <div>
+            <p class="text-red-500 font-bold ml-16 mb-8 text-3xl">Category wise Product</p>
             <canvas id="myChart"></canvas>
-            <p cclass="ml-14">Category wise Product</p>
         </div>
+    </div>
+    <div class="w-50px">
+            <p class="text-red-500 font-bold ml-96 mb-8 text-3xl">Total Orders</p>
+            <canvas id="myChart2"></canvas>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -101,7 +114,7 @@
     data: {
       labels: {!! json_encode($allcategories) !!},
       datasets: [{
-        label: '# of products',
+        label: 'No of products',
         data: {!! json_encode($categoryproduct) !!},
         borderWidth: 1
       }]
@@ -113,5 +126,25 @@
     }
   });
 </script>
+
+<script>
+    const ctx2 = document.getElementById('myChart2');
+
+    new Chart(ctx2, {
+      type: 'line',
+
+        data: {
+            labels: {!! $orderdates !!},
+            datasets: [{
+            label: 'Total Orders',
+            data: {!! $ordercount !!},
+            borderWidth: 1.5,
+            backgroundColor: 'rgba(54, 162, 235, 0.7)',
+            borderColor: 'rgba(0, 0, 255, 0.5)',
+            tension: 0.2
+            }]
+        },
+    });
+  </script>
 
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -26,6 +27,9 @@ class OrderController extends Controller
         $data['status'] = 'Pending';
         Order::create($data);
         Cart::find($request->cart_id)->delete();
+        $product = Product::find($data['product_id']);
+        $product->stock = $product->stock - $data['quantity'];
+        $product -> save();
         return redirect('/')->with('success', 'Order has been placed successfully');
     }
     public function index()
@@ -75,6 +79,9 @@ class OrderController extends Controller
                 'name' => $order->user->name,
                 'status' => $status,
             ];
+            $product = Product::find($data['product_id']);
+            $product->stock = $product->stock - $data['quantity'];
+            $product -> save();
 
             Mail::send('emails.orderemail', $emaildata, function ($message) use ($order) {
                 $message->to($order->user->email, $order->user->name)->subject('Order Notification');

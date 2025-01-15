@@ -25,6 +25,14 @@ class CartController extends Controller
     public function mycart()
     {
         $carts = Cart::where('user_id',auth()->user()->id)->get();
+        foreach($carts as $cart)
+        {
+            if($cart->product->stock < $cart->quantity)
+            {
+                Cart::find($cart->product_id)->update(['quantity'=>$cart->product->stock]);
+            }
+        }
+
         return view('cart',compact('carts'));
     }
     public function destroy(Request $request)
