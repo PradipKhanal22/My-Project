@@ -22,7 +22,7 @@ class DashboardController extends Controller
         $pendingorders = Order::where('status','Pending')->count();
         $totalreviews = Review::count();
 
-        // For Products
+        // For Category wise Products
         $allcategories = Category::all();
         $categoryproduct = [];
         foreach($allcategories as $category)
@@ -31,6 +31,7 @@ class DashboardController extends Controller
         }
         $allcategories = $allcategories->pluck('name')->toArray();
 
+        // For Orders
         $date = \Carbon\Carbon::today()->subDays(90);
         $orderdates = Order::where('created_at', '>=', $date)->pluck('created_at')->toArray();
         $orderdates = array_map(function($date){
@@ -45,7 +46,21 @@ class DashboardController extends Controller
         $orderdates = json_encode(array_values($orderdates));
         $ordercount = json_encode(array_values($ordercount));
 
+        // For Products
+        $date = \Carbon\Carbon::today()->subDays(30);
+        $productdates = Product::where('created_at', '>=', $date)->pluck('created_at')->toArray();
+        $productdates = array_map(function($date){
+            return date('Y-m-d', strtotime($date));
+        },$productdates);
+        $productdates = array_unique($productdates);
+        $productcount = [];
+        foreach($productdates as $productdate)
+        {
+            $productcount[] = Product::whereDate('created_at',$productdate)->count();
+        }
+        $productdates = json_encode(array_values($productdates));
+        $productcount = json_encode(array_values($productcount));
 
-        return view('dashboard',compact('totalproduct','totalcategories','totalorders','totalusers','deliveredorders','pendingorders','totalreviews','allcategories','categoryproduct','orderdates','ordercount'));
+        return view('dashboard',compact('totalproduct','totalcategories','totalorders','totalusers','deliveredorders','pendingorders','totalreviews','allcategories','categoryproduct','orderdates','ordercount','productdates','productcount'));
     }
 }

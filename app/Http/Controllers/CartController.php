@@ -62,4 +62,5 @@ class CartController extends Controller
         // Flash a success message
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
+
 }
