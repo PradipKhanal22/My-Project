@@ -22,8 +22,7 @@
                             class="ri-user-line"></i>{{ auth()->user()->name }}</a>
 
                     <span class="relative">
-                    <a href="{{ route('mycart') }}" class="p-2 text-black font-bold"><i class="ri-shopping-cart-fill"></i>My
-                        Cart</a>
+                    <a href="{{ route('mycart') }}" class="p-2 text-black font-bold"><i class="ri-shopping-cart-fill"></i><i class="fa-solid fa-cart-shopping" style="color: #000000;"></i></a>
                         <span class="absolute top-[-8px] right-[-6px] w-5 h-5 text-xs flex items-center justify-center bg-red-600 text-white rounded-full px-0.5">
                             @auth
                                 @php
@@ -35,7 +34,7 @@
                             @endauth
                         </span>
                     </span>
-                    <a href="{{route('wishlist.index')}}" class="p-2 relative text-black font-bold text-lg inline-block group"><i class="fa-regular fa-heart "></i> My Wishlist</a>
+                    <a href="{{route('wishlist.index')}}" class="p-2 relative text-black font-bold text-lg inline-block group"><i class="fa-regular fa-heart "></i></a>
 
                     <form action="{{ route('logout') }}" method="post" class="inline">
                         @csrf

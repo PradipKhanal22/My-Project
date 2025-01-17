@@ -82,9 +82,14 @@
 </div>
 
 <!-- Add Review Form -->
+@auth
 <div class="mt-12 px-20">
+    @php
+        $user_id = auth()->user()->id;
+        $count = \App\Models\Order::where('user_id', $user_id)->where('product_id', $product->id)->count();
+        @endphp
+    @if($count > 0)
     <h2 class="text-4xl font-extrabold text-gray-900 mb-8 text-center">Add Your Review</h2>
-    @auth
     <div class="bg-white rounded-xl shadow-lg p-8 max-w-3xl mx-auto">
         <form action="{{ route('reviews.store') }}" method="POST" class="space-y-6">
             @csrf
@@ -111,12 +116,13 @@
             </div>
         </form>
     </div>
+    @endif
     @else
     <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-6 rounded-lg max-w-3xl mx-auto text-center">
-        <p>Please <a href="{{ route('login') }}" class="text-blue-600 underline hover:text-blue-800">log in</a> to leave a review.</p>
+        <p>Please <a href="{{ route('products') }}" class="text-blue-600 underline hover:text-blue-800">Buy the Product</a> to leave a review.</p>
     </div>
-    @endauth
 </div>
+@endauth
 
 <!-- Related Products Section -->
 <div class="my-12 px-20">
