@@ -12,12 +12,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
 </head>
+
 <header class="h-screen w-88 bg-cover mt-0 relative bg-center" style="background-image: url('{{ asset('jersey.jpg') }}');">
     <main class="container mx-auto py-12">
-        <!-- Overlay for darker background -->
         <div class="absolute inset-0 bg-black bg-opacity-70"></div>
 
-        <!-- Centered Transparent Form -->
         <div class="relative flex items-center justify-center w-full h-full">
             <div class="bg-white bg-opacity-30 backdrop-blur-lg rounded-lg shadow-md p-6 w-full max-w-4xl text-gray-900">
                 <!-- Title -->
@@ -78,8 +77,8 @@
                     </div>
 
                     <!-- Submit Button (Centered) -->
-                    <div class=" text-center justify-center mt-4 ">
-                        <button type="submit" class=" mx-auto block w-full bg-yellow-500 text-black text-lg font-semibold py-3 rounded-lg shadow-md hover:bg-yellow-300 transition">
+                    <div class="text-center justify-center mt-4">
+                        <button type="submit" class="mx-auto block w-full bg-yellow-500 text-black text-lg font-semibold py-3 rounded-lg shadow-md hover:bg-yellow-300 transition">
                             <i class="ri-arrow-right-line"></i> Register
                         </button>
                     </div>
@@ -89,7 +88,7 @@
                 <div class="mt-4 text-center text-sm">
                     <p class="text-white font-semibold">
                         Already registered?
-                         <a href="{{ route('login') }}" class="text-gray-900 font-extrabold hover:underline">
+                        <a href="{{ route('login') }}" class="text-gray-900 font-extrabold hover:underline">
                             Login Here <i class="ri-login-circle-line"></i>
                         </a>
                     </p>
@@ -98,5 +97,34 @@
         </div>
     </main>
 </header>
+
+<!-- Notification System -->
+<div class="fixed top-0 right-0 p-6 space-y-4">
+    <!-- Success Notification -->
+    @if(session('success'))
+        <div class="bg-green-500 text-white p-4 rounded-lg shadow-lg">
+            <i class="ri-check-line"></i> {{ session('success') }}
+        </div>
+    @endif
+
+    <!-- Error Notification -->
+    @foreach($errors->all() as $error)
+        <div class="bg-red-500 text-white p-4 rounded-lg shadow-lg">
+            <i class="ri-close-circle-line"></i> {{ $error }}
+        </div>
+    @endforeach
+</div>
+
+<script>
+    // Optional: Automatically hide notifications after 5 seconds
+    setTimeout(() => {
+        const notifications = document.querySelectorAll('.bg-green-500, .bg-red-500');
+        notifications.forEach((notif) => {
+            notif.classList.add('opacity-0');
+            setTimeout(() => notif.remove(), 300);
+        });
+    }, 5000);
+</script>
+
 </html>
 @endsection

@@ -55,6 +55,7 @@ class RegisteredUserController extends Controller
         Mail::send('emails.welcomeEmail', $emaildata, function ($message) use ($user) {
             $message->to($user->email, $user->name)->subject('Welcome Notification');
         });
-        return redirect(route('dashboard', absolute: false));
+
+        return redirect(route('dashboard', absolute: false))->with('success', 'Registration successful!');
     }
 }

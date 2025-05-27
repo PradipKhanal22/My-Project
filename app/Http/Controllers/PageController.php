@@ -46,10 +46,45 @@ class PageController extends Controller
         $products = Product::where('name','like','%'.$qry.'%')->get();
         return view('search',compact('products','qry'));
     }
-    public function product()
-    {
-        $products = Product::all();
-        return view('product',compact('products'));
+
+   public function product(Request $request)
+{
+    $sort_by = $request->input('sort_by');
+    $products = Product::all();
+
+    if ($sort_by == 'price_asc') {
+        for ($i = 0; $i < count($products); $i++) {
+            for ($j = 0; $j < count($products) - $i - 1; $j++) {
+                if ($products[$j]->price > $products[$j + 1]->price) {
+                    $temp = $products[$j];
+                    $products[$j] = $products[$j + 1];
+                    $products[$j + 1] = $temp;
+                }
+            }
+        }
+    } elseif ($sort_by == 'price_desc') {
+        for ($i = 0; $i < count($products); $i++) {
+            for ($j = 0; $j < count($products) - $i - 1; $j++) {
+                if ($products[$j]->price < $products[$j + 1]->price) {
+                    $temp = $products[$j];
+                    $products[$j] = $products[$j + 1];
+                    $products[$j + 1] = $temp;
+                }
+            }
+        }
+    } elseif ($sort_by == 'latest') {
+        for ($i = 0; $i < count($products); $i++) {
+            for ($j = 0; $j < count($products) - $i - 1; $j++) {
+                if ($products[$j]->created_at < $products[$j + 1]->created_at) {
+                    $temp = $products[$j];
+                    $products[$j] = $products[$j + 1];
+                    $products[$j + 1] = $temp;
+                }
+            }
+        }
     }
+
+    return view('product', compact('products'));
+}
 
 }

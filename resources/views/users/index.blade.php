@@ -15,7 +15,7 @@
     <div class="p-2 ml-20">{{ $user->name }}</div>
     <div class="p-2 flex justify-center space-x-2 mr-20">
         <a href="" class="bg-blue-500 text-white px-3 py-1.5 rounded-lg">Edit</a>
-        <a href="" class="bg-red-700 text-white px-3 py-1.5 rounded-lg" onclick="return confirm('Are you sure you want to delete')">Delete</a>
+        <a href="{{route('users.destroy',$user->id)}}" class="bg-red-700 text-white px-3 py-1.5 rounded-lg" onclick="return confirm('Are you sure you want to delete')">Delete</a>
     </div>
 </div>
 @endforeach

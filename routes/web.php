@@ -77,6 +77,7 @@ Route::get('/products/chart', [ProductController::class, 'chart']);
 
     // Users
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/{id}destroy', [UserController::class, 'destroy'])->name('users.destroy');
 
 
     //orders

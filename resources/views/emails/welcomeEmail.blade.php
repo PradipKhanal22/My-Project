@@ -2,7 +2,7 @@
     <div class="max-w-lg mx-auto bg-white border border-gray-200 rounded-lg shadow-md p-6">
         <!-- Header -->
         <div class="text-center mb-6">
-            <h2 class="text-xl font-bold text-gray-900">🎉 Dear {{ $name }}, Welcome to RetroKits Nepal!</h2>
+            <h2 class="text-xl font-bold text-gray-900">🎉 Dear {{ $name }},<br> Welcome to RetroKits Nepal!</h2>
         </div>
 
         <!-- Content -->

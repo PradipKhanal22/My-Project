@@ -5,6 +5,17 @@
         <i class="ri-shopping-bag-2-fill text-red-600"></i> Our Products
     </h1>
 
+    <!-- Sort by Dropdown -->
+    <div class=" ml-8 mb-6 font-extrabold text-gray-900">
+        <form method="GET" action="{{ route('products') }}" id="sortForm">
+            <select name="sort_by" class=" cursor-pointer px-4 py-3 w-48 border border-gray-300 rounded-md font-medium bg-blue-700 text-white hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 shadow-md transition-all duration-300 ease-in-out transform hover:scale-105" onchange="document.getElementById('sortForm').submit();">
+                <option class="cursor-pointer" value="price_asc" {{ request('sort_by') == 'price_asc' ? 'selected' : '' }}>Price: Low to High</option>
+                <option class="cursor-pointer"  value="price_desc" {{ request('sort_by') == 'price_desc' ? 'selected' : '' }}>Price: High to Low</option>
+                <option class="cursor-pointer"  value="latest" {{ request('sort_by') == 'latest' ? 'selected' : '' }}>Latest</option>
+            </select>
+        </form>
+    </div>
+
     <div class="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-10 px-5 py-12 md:px-20 sm:px-10 bg-gradient-to-r from-gray-50 via-white to-gray-100">
         @foreach ($products as $product)
             <a href="{{ route('viewproduct', $product->id) }}" class="flex flex-col rounded-lg shadow-lg bg-white p-6 hover:shadow-2xl transform hover:scale-105 transition duration-300 border border-gray-200">

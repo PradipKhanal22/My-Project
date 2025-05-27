@@ -3,7 +3,7 @@
 @endsection
 @section('content')
 
-    <form action="{{route('products.store')}}" method="post"class="mt-5" enctype="multipart/form-data">
+    <form action="{{route('products.store')}}" method="post" class="mt-5" enctype="multipart/form-data">
         @csrf
         <div class="mb-5">
             <select name="category_id" class="p-3 w-full rounded-lg">

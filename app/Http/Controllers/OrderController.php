@@ -22,14 +22,14 @@ class OrderController extends Controller
             'phone' => 'required',
             'address' => 'required',
         ]);
-        $data['payment_method']='COD';
+        $data['payment_method'] = 'COD';
         $data['user_id'] = auth()->user()->id;
         $data['status'] = 'Pending';
         Order::create($data);
         Cart::find($request->cart_id)->delete();
         $product = Product::find($data['product_id']);
         $product->stock = $product->stock - $data['quantity'];
-        $product -> save();
+        $product->save();
         return redirect('/')->with('success', 'Order has been placed successfully');
     }
     public function index()
@@ -45,12 +45,12 @@ class OrderController extends Controller
         $emaildata = [
             'name' => $order->user->name,
             'status' => $status,
-            'product_name'=>$order->product->name,
-            'price'=>$order->price,
-            'payment_method'=>$order->payment_method,
+            'product_name' => $order->product->name,
+            'price' => $order->price,
+            'payment_method' => $order->payment_method,
         ];
         Mail::send('emails.orderemail', $emaildata, function ($message) use ($order) {
-           $message->to($order->user->email, $order->user->name)->subject('Order Notification');
+            $message->to($order->user->email, $order->user->name)->subject('Order Notification');
         });
         return back()->with('success', 'Order is now ' . $status);
     }
@@ -60,8 +60,7 @@ class OrderController extends Controller
         $data = base64_decode($data);
         $data = json_decode($data);
         $status = $data->status;
-        if ($status === "COMPLETE")
-        {
+        if ($status === "COMPLETE") {
             $cart = Cart::find($cartid);
             $order = new Order();
             $order->product_id = $cart->product_id;
@@ -80,8 +79,8 @@ class OrderController extends Controller
                 'status' => $status,
             ];
             $product = Product::find($data['product_id']);
-            $product->stock = $product->stock - $data['quantity'];
-            $product -> save();
+            $product->stock = $product->stock - $data->quantity;
+            $product->save();
 
             Mail::send('emails.orderemail', $emaildata, function ($message) use ($order) {
                 $message->to($order->user->email, $order->user->name)->subject('Order Notification');
@@ -93,7 +92,7 @@ class OrderController extends Controller
     public function historyindex()
     {
         $user = Auth::user();
-        $orders = Order::where('user_id',$user->id)->with('product')->get();
+        $orders = Order::where('user_id', $user->id)->with('product')->get();
         return view('purchased_history', compact('orders'));
     }
 }
