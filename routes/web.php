@@ -41,7 +41,7 @@ Route::middleware('auth')->group(function () {
 
     // Review
     Route::post('/review/store', [ReviewController::class, 'store'])->name('reviews.store');
-    Route::get('/purchase-history', [OrderController::class, 'historyindex'])->name('purchase.history');
+    // Route::get('/purchase-history', [OrderController::class, 'historyindex'])->name('purchase.history');
 
     // Wishlists
     Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
@@ -95,6 +95,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/order-history', [OrderController::class, 'orderHistory'])->name('user.orderHistory');
+    Route::post('/order/{orderId}/cancel', [OrderController::class, 'cancel'])->name('orders.cancel');
 });
 
 require __DIR__ . '/auth.php';

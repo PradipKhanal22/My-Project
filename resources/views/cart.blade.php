@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<a href="{{route('purchase.history')}}" class="ml-8 mt-6 inline-block bg-yellow-500 text-gray-900 font-bold px-6 py-3 rounded-full shadow-md hover:bg-yellow-300 transition duration-300">View My History</a>
+<a href="{{route('user.orderHistory')}}" class="ml-8 mt-6 inline-block bg-yellow-500 text-gray-900 font-bold px-6 py-3 rounded-full shadow-md hover:bg-yellow-300 transition duration-300">View My History</a>
 
     <h1 class="text-4xl font-bold text-black  text-center py-20">My Cart</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10 px-5 md:px-20">

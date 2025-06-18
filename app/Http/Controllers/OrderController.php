@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -77,9 +78,12 @@ class OrderController extends Controller
             $emaildata = [
                 'name' => $order->user->name,
                 'status' => $status,
+                'product_name' => $order->product->name,
+                'price' => $order->price,
+                'payment_method' => $order->payment_method,
             ];
-            $product = Product::find($data['product_id']);
-            $product->stock = $product->stock - $data->quantity;
+            $product = Product::find($order->product_id);
+            $product->stock = $product->stock - $order->quantity;
             $product->save();
 
             Mail::send('emails.orderemail', $emaildata, function ($message) use ($order) {
@@ -89,10 +93,48 @@ class OrderController extends Controller
         }
     }
 
-    public function historyindex()
+   public function orderHistory()
     {
-        $user = Auth::user();
-        $orders = Order::where('user_id', $user->id)->with('product')->get();
-        return view('purchased_history', compact('orders'));
+        $user = Auth::user(); // Get the authenticated user
+        $orders = Order::where('user_id', $user->id)
+            ->with('product') // Include the product details in the query
+            ->latest()
+            ->get(); // Fetch orders for the user
+
+        return view('purchased_history', compact('orders')); // Pass orders to the view
     }
+
+    public function cancel($orderId)
+    {
+        // Retrieve the order by its ID
+        $order = Order::findOrFail($orderId);
+
+        // Check if the order belongs to the authenticated user
+        if ($order->user_id != auth()->user()->id) {
+            return redirect()->route('user.bookingHistory')->with('error', 'You are not authorized to cancel this order.');
+        }
+
+        // Check if the cancellation is within 2 days of the order
+        $orderDate = Carbon::parse($order->created_at);
+        $currentDate = Carbon::now();
+        $diffInDays = $orderDate->diffInDays($currentDate);
+
+        if ($diffInDays <= 2) {
+            // Prepare email data for cancellation notification
+            $emailData = [
+                'name' => $order->user->name,
+                'status' => 'Cancelled',
+                'order' => $order,
+                'product' => $order->product,
+                'payment_method' => $order->payment_method,
+            ];
+            // Delete the order from the database
+            $order->delete();
+
+            return redirect()->route('user.orderHistory')->with('success', 'Your order has been successfully cancelled.');
+         } else {
+            return redirect()->route('user.orderHistory')->with('error', 'Orders can only be cancelled within 2 days of placement.');
+        }
+    }
+
 }
