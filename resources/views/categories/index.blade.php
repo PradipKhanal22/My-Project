@@ -8,7 +8,7 @@
 @section('content')
 <div class="my-5 text-right">
     <a href="{{ route('categories.create') }}" class="bg-purple-800 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition">
-        Add Category
+        + Add Category
     </a>
 
     {{-- Table Head for Desktop --}}

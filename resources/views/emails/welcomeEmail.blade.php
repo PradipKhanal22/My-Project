@@ -15,7 +15,6 @@
             <h3 class="font-semibold text-lg mt-4">Here’s what you can do next:</h3>
             <ul class="list-disc pl-5 space-y-2">
                 <li>🛒 <a href="" class="text-blue-500 underline">Explore our collections</a></li>
-                <li>📚 <a href="" class="text-blue-500 underline">Check out our guides & tutorials</a></li>
                 <li>🎁 Follow us on social media for updates and exclusive offers.</li>
             </ul>
 
