@@ -26,7 +26,7 @@
         <div class="p-2">{{ $product->name }}</div>
         <div class="p-2">{{ $product->price }}</div>
         <div class="p-2">{{ $product->stock }}</div>
-        <div class="p-2 truncate">{{ Str::limit($product->description, 40) }}</div>
+        <div class="p-2 truncate">{{ Str::limit($product->description, 50) }}</div>
         <div class="p-2">{{ $product->category->name }}</div>
         <div class="p-2">
             <img src="{{ asset('images/'.$product->photopath) }}" alt="Image" class="h-16 w-28 object-cover rounded">

@@ -37,7 +37,7 @@
     <div class="col-span-1 space-y-4">
         <div class="bg-green-100 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
             <p class="text-lg font-semibold text-green-800">Free Delivery</p>
-            <p class="text-sm text-gray-600">Delivery in 2-3 days</p>
+            <p class="text-sm text-gray-600">Delivery in 1-2 days</p>
         </div>
         <div class="bg-yellow-100 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
             <p class="text-lg font-semibold text-yellow-800">7 Days Return Policy</p>
