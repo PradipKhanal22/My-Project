@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    <h1 class="text-4xl font-bold text-black  text-center py-10">Checkout</h1>
+    <h1 class="text-4xl font-bold text-black  text-center py-10">Checkout Now</h1>
     <form action="{{route('orders.store')}}" method="POST" id="COD">
         @csrf
     <div class="grid grid-cols-5 gap-10 px-24 py-10 border-black">
