@@ -83,9 +83,6 @@
 
 <!-- Add Review Form -->
 
-
-
-
 @auth
 <div class="mt-12 px-20">
     @php

@@ -18,7 +18,7 @@
     <section id="about-retroKits" class="text-center mb-16">
         <h2 class="text-4xl font-bold mb-6 text-indigo-700">About RetroKits Nepal</h2>
         <p class="text-lg text-gray-700 max-w-3xl mx-auto">
-            At RetroKits Nepal, we are passionate about sports and the timeless apparel that has been an integral part of sports history. Our mission is to bring you the best in retro sportswear, celebrating the heritage and style of iconic sports moments
+            At RetroKits Nepal, we are passionate about sports and the timeless apparel that has been an integral part of sports history. Our mission is to bring you the best in retro sportswear, celebrating the heritage and style of iconic sports moments.
         </p>
     </section>
 
@@ -60,12 +60,11 @@
                 <p class="text-gray-500">New York, USA</p>
             </div>
             <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg max-w-md text-center">
-                <p class="text-gray-600 italic mb-4">"RetroKits Nepal offers a wide range of vintage and retro-themed apparel and accessories. I love how they cater to niche audiences who appreciate retro styles. The quality of their products is impressive, and their attention to detail makes every purchase feel unique"</p>
+                <p class="text-gray-600 italic mb-4">"RetroKits Nepal offers a wide range of vintage and retro-themed apparel and accessories. I love how they cater to niche audiences who appreciate retro styles. The quality of their products is impressive, and their attention to detail makes every purchase feel unique."</p>
                 <p class="font-semibold text-indigo-700">Anil & Priya</p>
                 <p class="text-gray-500">Kathmandu, Nepal</p>
             </div>
         </div>
     </section>
 </div>
-
 @endsection
