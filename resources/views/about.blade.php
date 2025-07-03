@@ -26,7 +26,7 @@
     <section id="mission" class="bg-white text-gray-900 py-12 px-6 rounded-lg mb-16 shadow-md">
         <h2 class="text-3xl font-bold mb-6 text-yellow-500 text-center">Our Mission</h2>
         <p class="text-lg max-w-3xl mx-auto text-center">
-            Our mission is to offer sports fans and athletes the opportunity to own a piece of sports history. We meticulously source and design our collections to ensure authenticity and quality, allowing you to relive the glory days of sports with every piece you wear.
+            Our mission is to offer sports fans and athletes the opportunity to own a piece of sports history. We meticulously source and design our collections to ensure quality, allowing you to relive the glory days of sports with every piece you wear.
         </p>
     </section>
 

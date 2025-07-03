@@ -100,7 +100,7 @@
                 <textarea id="review" name="review" rows="4" class="w-full p-4 border rounded-lg focus:ring-2 focus:ring-blue-300 focus:outline-none" placeholder="Share your experience..." required></textarea>
             </div>
             <div>
-                <label class="block text-lg font-bold text-gray-800 mb-2">Rating</label>
+                <label class="block text-lg font-bold text-gray-800 mb-2">Ratings</label>
                 <div class="flex items-center space-x-2">
                     @for($i = 1; $i <= 5; $i++)
                     <label>

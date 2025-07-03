@@ -64,7 +64,7 @@
 
         <a href="{{ route('products') }}"
            class="mt-8 inline-block bg-gradient-to-r from-red-500 to-yellow-500 text-white font-bold px-6 py-3 rounded-full shadow-lg hover:scale-105 transform hover:shadow-2xl transition-all duration-300">
-            Shop Now
+            Start Shopping
         </a>
     </div>
 </section>

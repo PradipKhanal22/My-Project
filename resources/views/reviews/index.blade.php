@@ -38,7 +38,7 @@
         </div>
         @empty
         <div class="col-span-1 sm:col-span-2 lg:col-span-3 text-center text-gray-500">
-            No reviews available.
+            No reviews available
         </div>
         @endforelse
     </div>

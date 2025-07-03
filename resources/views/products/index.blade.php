@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="text-right my-5">
-    <a href="{{ route('products.create') }}" class="bg-purple-800 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition">+ Add Product</a>
+    <a href="{{ route('products.create') }}" class="bg-purple-800 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition"> Add Product</a>
 </div>
 
 {{-- Table Headers (Desktop Only) --}}
@@ -13,7 +13,7 @@
     <div class="p-2">Product Name</div>
     <div class="p-2">Price</div>
     <div class="p-2">Stock</div>
-    <div class="p-2">Description</div>
+    <div class="p-2">Descriptions</div>
     <div class="p-2">Category</div>
     <div class="p-2">Picture</div>
     <div class="p-2">Action</div>
