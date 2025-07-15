@@ -76,6 +76,7 @@
         Product added to cart successfully!
     </div>
 
+    
     <script>
         // Toggle Sidebar
         const toggleButton = document.getElementById('menu-toggle');
@@ -109,5 +110,4 @@
         @endif
     </script>
 </body>
-
 </html>
