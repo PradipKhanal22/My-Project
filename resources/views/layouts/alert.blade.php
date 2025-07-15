@@ -10,9 +10,6 @@ shadow-lg border-l-8 border-indigo-600 z-[999]" id="alertmessage">
 </script>
 @endif
 
-
-
-
 @if(Session::has('error'))
 <div class="fixed right-4 bottom-4 bg-red-50 px-7 py-3 rounded-lg
 shadow-lg border-l-8 border-red-600 z-20" id="alertmessage">
