@@ -29,7 +29,6 @@
                 <a href="{{ route('categories.destroy', $category->id) }}" class="bg-red-700 text-white px-3 py-1.5 rounded hover:bg-red-800 text-xs" onclick="return confirm('Are you sure you want to delete?')">Delete</a>
             </div>
         </div>
-
         {{-- Mobile Card View --}}
         <div class="md:hidden bg-gray-900 text-white p-4 rounded-lg mt-3 text-sm">
             <div><span class="font-bold">S.N:</span> {{ $loop->iteration }}</div>
@@ -39,6 +38,7 @@
                 <a href="{{ route('categories.destroy', $category->id) }}" class="bg-red-700 text-white px-3 py-1 rounded hover:bg-red-800 text-xs" onclick="return confirm('Are you sure you want to delete?')">Delete</a>
             </div>
         </div>
+        
     @endforeach
 </div>
 @endsection
