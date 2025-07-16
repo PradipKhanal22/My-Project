@@ -43,10 +43,11 @@
                 <a href="{{ route('products.index') }}" class="p-3 block hover:bg-gray-600 rounded @if(Route::is('products.index')) bg-gray-600 @endif">
                     <i class="ri-shopping-bag-2-line mr-2"></i> Products
                 </a>
+                
                 <a href="{{ route('orders.index') }}" class="p-3 block hover:bg-gray-600 rounded @if(Route::is('orders.index')) bg-gray-600 @endif">
                     <i class="ri-shopping-cart-line mr-2"></i> Orders
                 </a>
-                
+
                 <a href="{{ route('reviews.index') }}" class="p-3 block hover:bg-gray-600 rounded @if(Route::is('reviews.index')) bg-gray-600 @endif">
                     <i class="ri-chat-check-line mr-2"></i> Reviews
                 </a>
