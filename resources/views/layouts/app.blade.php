@@ -58,6 +58,7 @@
                         <i class="ri-logout-box-line mr-2 text-red-300"></i> Logout
                     </button>
                 </form>
+                
             </nav>
         </aside>
 
@@ -70,7 +71,7 @@
             <hr class="h-1 bg-black font-bold mb-4">
             @yield('content')
         </div>
-        
+
     </div>
 
     <div id="notification" class="hidden fixed top-4 right-4 bg-green-500 text-white py-3 px-6 rounded shadow-lg z-50">
