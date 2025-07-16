@@ -49,10 +49,11 @@
                 <a href="{{ route('reviews.index') }}" class="p-3 block hover:bg-gray-600 rounded @if(Route::is('reviews.index')) bg-gray-600 @endif">
                     <i class="ri-chat-check-line mr-2"></i> Reviews
                 </a>
+                
                 <a href="{{ route('users.index') }}" class="p-3 block hover:bg-gray-600 rounded @if(Route::is('users.index')) bg-gray-600 @endif">
                     <i class="ri-user-line mr-2"></i> Users
                 </a>
-                
+
                 <form action="{{ route('logout') }}" method="POST" class="p-3 block hover:bg-red-700 rounded">
                     @csrf
                     <button type="submit" class="w-full text-left flex items-center">
