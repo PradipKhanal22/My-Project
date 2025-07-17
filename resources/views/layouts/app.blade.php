@@ -37,14 +37,15 @@
                 <a href="{{ route('dashboard') }}" class="p-3 block hover:bg-gray-600 rounded @if(Route::is('dashboard')) bg-gray-600 @endif">
                     <i class="ri-dashboard-line mr-2"></i> Dashboard
                 </a>
+                
                 <a href="{{ route('categories.index') }}" class="p-3 block hover:bg-gray-600 rounded @if(Route::is('categories.index')) bg-gray-600 @endif">
                     <i class="ri-folder-line mr-2"></i> Categories
                 </a>
-                
+
                 <a href="{{ route('products.index') }}" class="p-3 block hover:bg-gray-600 rounded @if(Route::is('products.index')) bg-gray-600 @endif">
                     <i class="ri-shopping-bag-2-line mr-2"></i> Products
                 </a>
-                
+
                 <a href="{{ route('orders.index') }}" class="p-3 block hover:bg-gray-600 rounded @if(Route::is('orders.index')) bg-gray-600 @endif">
                     <i class="ri-shopping-cart-line mr-2"></i> Orders
                 </a>
