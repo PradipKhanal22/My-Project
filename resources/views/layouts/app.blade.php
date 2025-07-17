@@ -33,8 +33,9 @@
                 <img src="{{ asset('image.png') }}" alt="Logo" class="w-20 h-20 bg-white p-2 rounded-full shadow-lg">
                 <h2 class="text-white font-bold mt-4 text-lg">Admin Panel</h2>
             </div>
+            
             <nav class="mt-6 space-y-2 px-2">
-                
+
                 <a href="{{ route('dashboard') }}" class="p-3 block hover:bg-gray-600 rounded @if(Route::is('dashboard')) bg-gray-600 @endif">
                     <i class="ri-dashboard-line mr-2"></i> Dashboard
                 </a>
