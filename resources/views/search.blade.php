@@ -17,15 +17,15 @@
                         Product</a>
                 </div>
             </div>
-            @empty
-                <!-- No Results Section -->
-                <div class="col-span-full text-center">
-                    <img src="{{ asset('no-results.png') }}" alt="No Results Found" class="mx-auto w-1/3 h-auto mb-6">
-                    <h2 class="text-4xl font-bold text-gray-500">No Products Found</h2>
-                    <p class="text-lg text-gray-600 mt-4">Try adjusting your search or explore our <a
-                            href="{{ route('products') }}" class="text-indigo-600 font-bold hover:underline">available
-                            Products</a>.</p>
-                </div>
-            @endforelse
-        </div>
-    @endsection
+        @empty
+            <!-- No Results Section -->
+            <div class="col-span-full text-center">
+                <img src="{{ asset('no-results.png') }}" alt="No Results Found" class="mx-auto w-1/3 h-auto mb-6">
+                <h2 class="text-4xl font-bold text-gray-500">No Products Found</h2>
+                <p class="text-lg text-gray-600 mt-4">Try adjusting your search or explore our <a
+                        href="{{ route('products') }}" class="text-indigo-600 font-bold hover:underline">available
+                        Products</a>.</p>
+            </div>
+        @endforelse
+    </div>
+@endsection

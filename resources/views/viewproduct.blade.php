@@ -2,6 +2,7 @@
 @section('content')
 <div class=" py-5 text-gray-900">
     <p class="text-center text-xl font-extrabold text-gray-600">Discover premium quality and unmatched style in our exclusive collection.!</p>
+    
 <!-- Product Section -->
 <div class="grid grid-cols-4 px-20 my-10 gap-10">
     <!-- Product Image Section -->

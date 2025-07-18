@@ -24,7 +24,6 @@ Route::get('/categoryproduct/{id}', [PageController::class, 'categoryproduct'])-
 Route::get('/viewproduct/{id}', [PageController::class, 'viewproduct'])->name(('viewproduct'));
 Route::get('/allproduct', [PageController::class, 'product'])->name(('products'));
 
-
 // Serach
 Route::get('/search', [PageController::class, 'search'])->name('search');
 
