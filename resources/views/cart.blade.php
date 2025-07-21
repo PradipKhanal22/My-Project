@@ -25,7 +25,6 @@
         @endforeach
     </div>
 
-    
     <!-- Delete Modal -->
     <div class="fixed inset-0 bg-blue-400 bg-opacity-45 backdrop-blur-md hidden items-center justify-center"
         id="deleteModal">
@@ -41,7 +40,7 @@
         </form>
     </div>
 
-    
+
     <script>
         function hideModal() {
             document.getElementById('deleteModal').classList.add('hidden');
