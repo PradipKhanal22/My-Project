@@ -40,6 +40,13 @@
         </form>
     </div>
 
+    @if ($carts->isEmpty())
+        <div class="text-center text-gray-500 mt-10">
+            <h2 class="text-2xl font-semibold">Your cart is empty</h2>
+            <p class="mt-2">Add some products to your cart to see them here.</p>
+        </div>
+    @endif
+
     <script>
         function hideModal() {
             document.getElementById('deleteModal').classList.add('hidden');
