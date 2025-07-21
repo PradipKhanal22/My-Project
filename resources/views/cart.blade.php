@@ -47,6 +47,7 @@
         </div>
     @endif
 
+    
     <script>
         function hideModal() {
             document.getElementById('deleteModal').classList.add('hidden');
