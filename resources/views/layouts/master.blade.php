@@ -65,6 +65,7 @@
             <a href="{{ route('home') }}" class="p-2 relative text-black font-bold text-lg inline-block group ">
                 <span
                     class="absolute left-0 bottom-0 h-[2px] w-0 bg-black transition-all duration-300 group-hover:w-full 0"></span> Home</a>
+                    
             @php
                 $categories = App\models\Category::orderBy('priority')->get();
             @endphp
