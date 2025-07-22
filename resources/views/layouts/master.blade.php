@@ -75,11 +75,9 @@
                         class="absolute left-0 bottom-0 h-[2px] w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
                 </a>
             @endforeach
-
         </div>
-
         <form action="{{route('search')}}" method="GET">
-            <input type="search" placeholder="Search here..." class="px-2 py-1.5 border rounded-lg" name="qry" value="{{request()->qry}}"cminlength="2" required>
+            <input type="search" placeholder="Search here..." class="px-2 py-1.5 border rounded-lg" name="qry" value="{{request()->qry}}" minlength="2" required>
             <button type="submit" class="px-2 py-1.5 bg-blue-600 text-white rounded-lg"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
         </form>
         @auth
