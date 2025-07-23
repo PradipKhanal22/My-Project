@@ -87,8 +87,6 @@
             @endauth
     </nav>
 
-
-    
     <nav
         class="lg:hidden block  sticky top-0 items-center px-20 py-5 shadow-md bg-yellow-500 "style="z-index: 10000000">
         <div class=" px-2 py-2  flex justify-between items-center rounded-lg ">
