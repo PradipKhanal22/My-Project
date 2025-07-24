@@ -62,9 +62,13 @@
             {{-- <a href="{{ route('home') }}" class="text-2xl font-bold font-serif px-2">RetroKits Nepal</a> --}}
         </div>
         <div>
-            <a href="{{ route('home') }}" class="p-2 relative text-black font-bold text-lg inline-block group ">
+            <a href="{{ route('home') }}" 
+               class="p-2 relative text-black font-bold text-lg inline-block group bg-gray-200 underline"
+               style="border-radius: 0.375rem;">
                 <span
-                    class="absolute left-0 bottom-0 h-[2px] w-0 bg-black transition-all duration-300 group-hover:w-full 0"></span> Home</a>
+                    class="absolute left-0 bottom-0 h-[2px] w-full bg-black transition-all duration-300"></span>
+                Home
+            </a>
             @php
                 $categories = App\models\Category::orderBy('priority')->get();
             @endphp
@@ -144,7 +148,12 @@
             </div>
         </div>
         <div class = "bg-black text-white text-center py-5">
-            <p> &copy; 2025 All rights reserved. This theme was developed by <a href="" class="font-bold text-orange-600 underline">Pradip Khanal</a>. Please refrain from using it for Commercial Purposes.</p>
+            <p class="text-lg font-semibold tracking-wide">
+                &copy; 2025 <span class="text-orange-400">RetroKits Nepal</span>. All rights reserved.<br>
+                <span class="text-gray-300">Theme by</span>
+                <a href="#" class="font-bold text-orange-500 underline hover:text-orange-300 transition-colors duration-200">Pradip Khanal</a>
+                <span class="block text-sm text-gray-400 mt-1">Please refrain from using it for commercial purposes.</span>
+            </p>
         </div>
         </div>
     </footer>
