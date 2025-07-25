@@ -33,11 +33,13 @@ class OrderController extends Controller
         $product->save();
         return redirect('/')->with('success', 'Order has been placed successfully');
     }
+    
     public function index()
     {
         $orders = Order::all();
         return view('orders.index', compact('orders'));
     }
+
     public function status($id, $status)
     {
         $order = Order::find($id);
