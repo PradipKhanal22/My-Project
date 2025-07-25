@@ -57,7 +57,7 @@ class OrderController extends Controller
         });
         return back()->with('success', 'Order is now ' . $status);
     }
-    
+
     public function storeEsewa(Request $request, $cartid)
     {
         $data = $request->data;
