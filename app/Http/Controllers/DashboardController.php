@@ -63,4 +63,5 @@ class DashboardController extends Controller
 
         return view('dashboard',compact('totalproduct','totalcategories','totalorders','totalusers','deliveredorders','pendingorders','totalreviews','allcategories','categoryproduct','orderdates','ordercount','productdates','productcount'));
     }
+    
 }
