@@ -33,7 +33,7 @@ class OrderController extends Controller
         $product->save();
         return redirect('/')->with('success', 'Order has been placed successfully');
     }
-    
+
     public function index()
     {
         $orders = Order::all();
@@ -57,6 +57,7 @@ class OrderController extends Controller
         });
         return back()->with('success', 'Order is now ' . $status);
     }
+    
     public function storeEsewa(Request $request, $cartid)
     {
         $data = $request->data;
