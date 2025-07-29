@@ -146,8 +146,9 @@
                                 class="ri-instagram-fill"></i> Instagram </a> </li>
                 </ul>
             </div>
-            
+
         </div>
+
         <div class = "bg-black text-white text-center py-5">
             <p class="text-lg font-semibold tracking-wide">
                 &copy; 2025 <span class="text-orange-400">RetroKits Nepal</span>. All rights reserved.<br>
@@ -156,6 +157,7 @@
                 <span class="block text-sm text-gray-400 mt-1">Please refrain from using it for commercial purposes.</span>
             </p>
         </div>
+        
         </div>
     </footer>
     <script>
