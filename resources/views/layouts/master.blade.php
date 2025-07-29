@@ -124,7 +124,7 @@
                     <li><a href="{{ route('contact') }}" class="p-2 font-bold"> Contact </a>
                 </ul>
             </div>
-            
+
             <div class="font-semibold mr-20">
                 <h2 class = "text-2xl font-bold"> Contact Us </h2>
                 <p><i class="ri-mail-line"></i> Email : retronepal74@gmail.com<br> <i class="ri-phone-fill"></i>Phone:
@@ -134,6 +134,7 @@
                     Nepal
                 </p>
             </div>
+            
             <div class="ml-20">
                 <h2 class = "text-2xl font-bold">Social Links</h2>
                 <ul>
