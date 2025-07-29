@@ -112,7 +112,7 @@
             @endforeach
         </div>
     </nav>
-    
+
     @yield('content')
     <footer class="mt-1">
         <div class="grid md:grid-cols-3 sm:gird-cols-2 px-20 gap-20 bg-slate-200 py-10 ">
@@ -124,6 +124,7 @@
                     <li><a href="{{ route('contact') }}" class="p-2 font-bold"> Contact </a>
                 </ul>
             </div>
+            
             <div class="font-semibold mr-20">
                 <h2 class = "text-2xl font-bold"> Contact Us </h2>
                 <p><i class="ri-mail-line"></i> Email : retronepal74@gmail.com<br> <i class="ri-phone-fill"></i>Phone:
