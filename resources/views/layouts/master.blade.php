@@ -134,7 +134,7 @@
                     Nepal
                 </p>
             </div>
-            
+
             <div class="ml-20">
                 <h2 class = "text-2xl font-bold">Social Links</h2>
                 <ul>
@@ -146,6 +146,7 @@
                                 class="ri-instagram-fill"></i> Instagram </a> </li>
                 </ul>
             </div>
+            
         </div>
         <div class = "bg-black text-white text-center py-5">
             <p class="text-lg font-semibold tracking-wide">
