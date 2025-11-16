@@ -33,7 +33,7 @@
                                 0
                             @endauth
                         </span>
-                    </span>
+                    </span>w
                     <a href="{{route('wishlist.index')}}" class="p-2 relative text-black font-bold text-lg inline-block group"><i class="fa-regular fa-heart "></i></a>
 
                     <form action="{{ route('logout') }}" method="post" class="inline">
@@ -157,7 +157,7 @@
                 <span class="block text-sm text-gray-400 mt-1">Please refrain from using it for commercial purposes.</span>
             </p>
         </div>
-        
+
         </div>
     </footer>
     <script>
