@@ -5,173 +5,413 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>RetroKits Nepal</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <title>RetroKits Nepal - Authentic Vintage Sportswear</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body>
+<body class="flex flex-col min-h-screen">
     @include('layouts.alert')
-    <div class="flex justify-between items-center px-16 bg-orange-500 text-white py-4 h-10 sticky top-0" style="z-index: 10">
-        <div class="flex">
-            <a href="" class="sm:block hidden"><i class="fa-solid fa-phone p-1 rounded-full bg-white" style="color: #003694;"></i> 9765660867</a>
-            <a href="" class="sm:block hidden ml-2"><i class="fa-solid fa-envelope p-1 rounded-full bg-white" style="color: #0043b8;"></i> retronepal74@gmail.com</a>
+
+    <!-- Top Bar -->
+    <div class="bg-gradient-to-r from-red-600 to-yellow-500 text-white py-2 sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-12">
+            <div class="flex justify-between items-center text-sm">
+                <!-- Contact Info -->
+                <div class="flex items-center gap-4">
+                    <a href="tel:9765660867" class="hidden sm:flex items-center gap-2 hover:text-gray-100 transition-colors">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>9765660867</span>
+                    </a>
+                    <a href="mailto:retronepal74@gmail.com" class="hidden md:flex items-center gap-2 hover:text-gray-100 transition-colors">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>retronepal74@gmail.com</span>
+                    </a>
+                </div>
+
+                <!-- User Actions -->
+                <div class="flex items-center gap-3">
+                    @auth
+                        <span class="hidden sm:inline text-sm">Welcome, <strong>{{ auth()->user()->name }}</strong></span>
+
+                        <!-- Cart -->
+                        <a href="{{ route('mycart') }}" class="relative hover:text-gray-100 transition-colors p-1">
+                            <i class="fa-solid fa-cart-shopping text-lg"></i>
+                            @php
+                                $no_of_items = \App\Models\Cart::where('user_id', auth()->id())->count();
+                            @endphp
+                            @if($no_of_items > 0)
+                            <span class="absolute -top-2 -right-2 w-5 h-5 text-xs flex items-center justify-center bg-white text-red-600 rounded-full font-bold">
+                                {{ $no_of_items }}
+                            </span>
+                            @endif
+                        </a>
+
+                        <!-- Wishlist -->
+                        <a href="{{ route('wishlist.index') }}" class="hover:text-gray-100 transition-colors p-1">
+                            <i class="fa-regular fa-heart text-lg"></i>
+                        </a>
+
+                        <!-- Logout -->
+                        <form action="{{ route('logout') }}" method="post" class="inline">
+                            @csrf
+                            <button type="submit" class="hover:text-gray-100 transition-colors flex items-center gap-1 p-1">
+                                <i class="ri-logout-box-line text-lg"></i>
+                                <span class="hidden sm:inline">Logout</span>
+                            </button>
+                        </form>
+                    @else
+                        <a href="/login" class="bg-white text-red-600 px-4 py-1 rounded-full font-semibold hover:bg-gray-100 transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-user"></i>
+                            <span>Login</span>
+                        </a>
+                    @endauth
+                </div>
+            </div>
         </div>
-            <div>
-            @auth
-                    <a href="" class="text-black font-bold">Hi , <i
-                            class="ri-user-line"></i>{{ auth()->user()->name }}</a>
+    </div>
 
-                    <span class="relative">
-                    <a href="{{ route('mycart') }}" class="p-2 text-black font-bold"><i class="ri-shopping-cart-fill"></i><i class="fa-solid fa-cart-shopping" style="color: #000000;"></i></a>
-                        <span class="absolute top-[-8px] right-[-6px] w-5 h-5 text-xs flex items-center justify-center bg-red-600 text-white rounded-full px-0.5">
-                            @auth
-                                @php
-                                    $no_of_items = \App\Models\Cart::where('user_id',auth()->id())->Count();
-                                @endphp
-                                {{$no_of_items}}
-                                @else
-                                0
-                            @endauth
+    <!-- Main Navigation -->
+    <nav class="bg-white shadow-md sticky top-10 z-40 border-b border-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-12">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="{{ route('home') }}" class="flex items-center group">
+                    <img src="{{ asset('logo1.png') }}" alt="RetroKits Nepal" class="h-16 w-auto transition-all duration-300 group-hover:scale-110 drop-shadow-md">
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center gap-2">
+                    <a href="{{ route('home') }}" class="px-6 py-2.5 text-gray-800 hover:text-white hover:bg-gradient-to-r hover:from-red-600 hover:to-red-500 font-semibold rounded-lg transition-all duration-300 relative overflow-hidden group">
+                        <span class="relative z-10 flex items-center gap-2">
+                            <i class="ri-home-5-line"></i>
+                            Home
                         </span>
-                    </span>w
-                    <a href="{{route('wishlist.index')}}" class="p-2 relative text-black font-bold text-lg inline-block group"><i class="fa-regular fa-heart "></i></a>
+                    </a>
 
-                    <form action="{{ route('logout') }}" method="post" class="inline">
-                        @csrf
-                        <button type="submit" class="p-2 font-bold text-black"><i
-                                class="ri-logout-box-line"></i>Logout</button>
+                    @php
+                        $categories = App\models\Category::orderBy('priority')->get();
+                    @endphp
+                    @foreach ($categories as $category)
+                        <a href="{{ route('categoryproduct', $category->id) }}" class="px-6 py-2.5 text-gray-800 hover:text-white hover:bg-gradient-to-r hover:from-red-600 hover:to-red-500 font-semibold rounded-lg transition-all duration-300 relative overflow-hidden group">
+                            <span class="relative z-10 flex items-center gap-2">
+                                <i class="ri-shirt-line"></i>
+                                {{ $category->name }}
+                            </span>
+                        </a>
+                    @endforeach
+                </div>
+
+                <!-- Search Bar & User Profile -->
+                <div class="hidden lg:flex items-center gap-4">
+                    <form action="{{ route('search') }}" method="GET" class="relative group">
+                        <input type="search"
+                               placeholder="Search products..."
+                               class="pl-5 pr-12 py-2.5 border-2 border-gray-200 rounded-full focus:outline-none focus:border-red-600 focus:shadow-lg transition-all w-72 bg-gray-50 focus:bg-white"
+                               name="qry"
+                               value="{{ request()->qry }}"
+                               minlength="2"
+                               required>
+                        <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 bg-gradient-to-r from-red-600 to-red-500 text-white w-8 h-8 rounded-full hover:from-red-700 hover:to-red-600 transition-all flex items-center justify-center shadow-md">
+                            <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                        </button>
                     </form>
-                @else
-                    <a href="/login" class=" relative bg-black px-2  rounded-full  font-bold font-serif text-lg inline-block group"><i class="fa-solid fa-user" style="color: #ffffff;"></i>
-                        <span
-                            class="absolute left-0 bottom-0 h-[2px] w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
+
+                    @auth
+                        <a href="{{ route('userprofile.edit') }}" class="group relative">
+                            <img src="{{ asset('avatar.jpg') }}" alt="User Avatar" class="w-11 h-11 rounded-full shadow-md group-hover:shadow-xl transition-all border-2 border-gray-200 group-hover:border-red-600 ring-2 ring-transparent group-hover:ring-red-100">
+                        </a>
+                    @endauth
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="lg:hidden text-gray-700 hover:text-red-600 p-2 rounded-lg hover:bg-red-50 transition-all">
+                    <i class="ri-menu-3-line text-3xl" id="menuIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobileMenu" class="lg:hidden hidden border-t border-gray-200 bg-white shadow-inner">
+            <div class="container mx-auto px-4 py-4 space-y-2">
+                <!-- Mobile Search -->
+                <form action="{{ route('search') }}" method="GET" class="mb-4">
+                    <div class="relative">
+                        <input type="search"
+                               placeholder="Search products..."
+                               class="w-full pl-5 pr-12 py-3 border-2 border-gray-200 rounded-full focus:outline-none focus:border-red-600 bg-gray-50 focus:bg-white transition-all"
+                               name="qry"
+                               value="{{ request()->qry }}"
+                               minlength="2"
+                               required>
+                        <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 bg-gradient-to-r from-red-600 to-red-500 text-white w-9 h-9 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Mobile Menu Links -->
+                <a href="{{ route('home') }}" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-red-50 hover:to-yellow-50 hover:text-red-600 rounded-xl font-semibold transition-all">
+                    <i class="ri-home-3-fill text-xl"></i>
+                    <span>Home</span>
+                </a>
+
+                @foreach ($categories as $category)
+                    <a href="{{ route('categoryproduct', $category->id) }}" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-red-50 hover:to-yellow-50 hover:text-red-600 rounded-xl font-semibold transition-all">
+                        <i class="ri-shirt-line text-xl"></i>
+                        <span>{{ $category->name }}</span>
+                    </a>
+                @endforeach
+
+                @auth
+                    <a href="{{ route('userprofile.edit') }}" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-red-50 hover:to-yellow-50 hover:text-red-600 rounded-xl font-semibold transition-all">
+                        <i class="ri-user-line text-xl"></i>
+                        <span>My Profile</span>
                     </a>
                 @endauth
             </div>
-
-        {{-- <div class="gap-2">
-            <a href=""><i class="fa-brands fa-facebook p-1 rounded-full bg-white" style="color: #003185;"></i></a>
-            <a href=""><i class="fa-brands fa-instagram  p-1 rounded-full bg-white" style="color: #a70233;"></i></a>
-            <a href="" class=""><i class="fa-brands fa-twitter p-1 rounded-full bg-white" style="color: #0041b3;"></i></a>
-        </div> --}}
-    </div>
-    <nav
-        class="lg:flex hidden justify-between  items-center h-14 px-12 py-5 shadow-lg bg-white ; "style="z-index: 10">
-        <div class="px-2 py-2  flex justify-between items-center rounded-lg">
-           <a href="{{ route('home') }}"> <img src="{{asset('logo1.png')}}" alt="No images found" class="w-20 h-14  px-2"> </a>
-            {{-- <a href="{{ route('home') }}" class="text-2xl font-bold font-serif px-2">RetroKits Nepal</a> --}}
-        </div>
-        <div>
-            <a href="{{ route('home') }}" class="p-2 relative text-black font-bold text-lg inline-block group ">
-                <span
-                    class="absolute left-0 bottom-0 h-[2px] w-0 bg-black transition-all duration-300 group-hover:w-full 0"></span> Home</a>
-            @php
-                $categories = App\models\Category::orderBy('priority')->get();
-            @endphp
-            @foreach ($categories as $category)
-                <a href="{{ route('categoryproduct', $category->id) }}"
-                    class="p-2 relative text-black font-bold text-lg inline-block group">{{ $category->name }}
-                    <span
-                        class="absolute left-0 bottom-0 h-[2px] w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                </a>
-            @endforeach
-        </div>
-
-        <form action="{{route('search')}}" method="GET">
-            <input type="search" placeholder="Search here..." class="px-2 py-1.5 border rounded-lg" name="qry" value="{{request()->qry}}" minlength="2" required>
-            <button type="submit" class="px-2 py-1.5 bg-blue-600 text-white rounded-lg"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
-        </form>
-        @auth
-            <a href="{{ route('userprofile.edit') }}" class="block w-10 h-10">
-                <img src="{{ asset('avatar.jpg') }}" alt="User Avatar" class="w-10 h-10 rounded-full shadow-lg">
-            </a>
-            @endauth
-    </nav>
-
-    <nav
-        class="lg:hidden block  sticky top-0 items-center px-20 py-5 shadow-md bg-yellow-500 "style="z-index: 10000000">
-        <div class=" px-2 py-2  flex justify-between items-center rounded-lg ">
-            {{-- <img src="{{asset('logo.png')}}" alt="No images found" class="w-12 h-12"> --}}
-            <a href="{{ route('home') }}" class="text-2xl font-bold font-serif px-2">RetroKits Nepal</a>
-            <i class="ri-menu-3-line text-2xl border p-4 rounded-lg" onclick="toggleMenu()"></i>
-        </div>
-        <div class="hidden mt-4 sticky top-0 font-bold" id="mob-menu">
-            <a href="{{ route('home') }}" class="p-2  relative text-black font-bold text-lg inline-block group"> <i
-                    class="ri-home-3-fill"></i> Home
-                <span
-                    class="absolute left-0 bottom-0 h-[2px] w-0 bg-black transition-all duration-300 group-hover:w-full"></span></a>
-            @php
-                $categories = App\models\Category::orderBy('priority')->get();
-            @endphp
-            @foreach ($categories as $category)
-                <a href="{{ route('categoryproduct', $category->id) }}"
-                    class="p-2 relative text-black font-bold text-lg inline-block group">{{ $category->name }}
-                    <span
-                        class="absolute left-0 bottom-0 h-[2px] w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
-                </a>
-            @endforeach
         </div>
     </nav>
 
-    @yield('content')
-    <footer class="mt-1">
-        <div class="grid md:grid-cols-3 sm:gird-cols-2 px-20 gap-20 bg-slate-200 py-10 ">
-            <div>
-                <h2 class = "text-2xl font-bold"> Quick Links </h2>
-                <ul>
-                    <li><a href="{{ route('home') }}" class="p-2 font-bold">Home </a>
-                    <li><a href="{{ route('about') }}" class="p-2 font-bold"> About </a>
-                    <li><a href="{{ route('contact') }}" class="p-2 font-bold"> Contact </a>
-                </ul>
-            </div>
+    <!-- Main Content -->
+    <main class="flex-grow">
+        @yield('content')
+    </main>
 
-            <div class="font-semibold mr-20">
-                <h2 class = "text-2xl font-bold"> Contact Us </h2>
-                <p><i class="ri-mail-line"></i> Email : retronepal74@gmail.com<br> <i class="ri-phone-fill"></i>Phone:
-                    9765660867</p>
-                <p><i class="ri-map-pin-line"></i>Address: Kawasoti-9,
-                    Nawalpur <br>
-                    Nepal
-                </p>
-            </div>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 mt-20">
+        <!-- Main Footer Content -->
+        <div class="container mx-auto px-6 lg:px-12 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <!-- Company Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <img src="{{ asset('logo1.png') }}" alt="RetroKits Nepal" class="h-12 w-auto">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">RetroKits</h3>
+                            <p class="text-sm text-red-500 font-semibold">Nepal</p>
+                        </div>
+                    </div>
+                    <p class="text-sm leading-relaxed">
+                        Your ultimate destination for authentic vintage sportswear. We bring you the finest collection of retro sports jerseys and memorabilia.
+                    </p>
+                    <!-- Social Links -->
+                    <div class="flex gap-3 pt-2">
+                        <a href="https://www.facebook.com/search/top?q=retro%20kits%20nepal" target="_blank" class="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <i class="fab fa-facebook-f text-lg"></i>
+                        </a>
+                        <a href="https://www.instagram.com/retrokitsnp/" target="_blank" class="w-10 h-10 bg-gray-800 hover:bg-pink-600 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                        <a href="https://www.twitter.com/RetroKitsNepal" target="_blank" class="w-10 h-10 bg-gray-800 hover:bg-blue-400 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <i class="fab fa-twitter text-lg"></i>
+                        </a>
+                    </div>
+                </div>
 
-            <div class="ml-20">
-                <h2 class = "text-2xl font-bold">Social Links</h2>
-                <ul>
-                    <li><a href="https://www.facebook.com/search/top?q=retro%20kits%20nepal" class="font-bold"><i
-                                class="ri-facebook-circle-fill"></i> Facebook </a> </li>
-                    <li><a href="https://www.twitter.com/RetroKitsNepal" class="font-bold"> <i
-                                class="ri-twitter-line"></i> Twitter </a> </li>
-                    <li><a href="https://www.instagram.com/retrokitsnp/" class="font-bold"><i
-                                class="ri-instagram-fill"></i> Instagram </a> </li>
-                </ul>
-            </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-6 relative inline-block">
+                        Quick Links
+                        <span class="absolute bottom-0 left-0 w-12 h-0.5 bg-red-600"></span>
+                    </h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="{{ route('home') }}" class="flex items-center gap-2 hover:text-red-500 transition-colors group">
+                                <i class="ri-arrow-right-s-line group-hover:translate-x-1 transition-transform"></i>
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('products') }}" class="flex items-center gap-2 hover:text-red-500 transition-colors group">
+                                <i class="ri-arrow-right-s-line group-hover:translate-x-1 transition-transform"></i>
+                                Shop
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('about') }}" class="flex items-center gap-2 hover:text-red-500 transition-colors group">
+                                <i class="ri-arrow-right-s-line group-hover:translate-x-1 transition-transform"></i>
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('contact') }}" class="flex items-center gap-2 hover:text-red-500 transition-colors group">
+                                <i class="ri-arrow-right-s-line group-hover:translate-x-1 transition-transform"></i>
+                                Contact
+                            </a>
+                        </li>
+                        @auth
+                        <li>
+                            <a href="{{ route('mycart') }}" class="flex items-center gap-2 hover:text-red-500 transition-colors group">
+                                <i class="ri-arrow-right-s-line group-hover:translate-x-1 transition-transform"></i>
+                                My Cart
+                            </a>
+                        </li>
+                        @endauth
+                    </ul>
+                </div>
 
+                <!-- Categories -->
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-6 relative inline-block">
+                        Categories
+                        <span class="absolute bottom-0 left-0 w-12 h-0.5 bg-red-600"></span>
+                    </h3>
+                    <ul class="space-y-3">
+                        @php
+                            $footerCategories = App\models\Category::orderBy('priority')->take(5)->get();
+                        @endphp
+                        @foreach ($footerCategories as $category)
+                        <li>
+                            <a href="{{ route('categoryproduct', $category->id) }}" class="flex items-center gap-2 hover:text-red-500 transition-colors group">
+                                <i class="ri-arrow-right-s-line group-hover:translate-x-1 transition-transform"></i>
+                                {{ $category->name }}
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-6 relative inline-block">
+                        Contact Us
+                        <span class="absolute bottom-0 left-0 w-12 h-0.5 bg-red-600"></span>
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="ri-map-pin-line text-red-500 text-xl mt-1"></i>
+                            <div>
+                                <p class="font-semibold text-white">Address</p>
+                                <p class="text-sm">Kawasoti-9, Nawalpur<br>Nepal</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="ri-phone-line text-red-500 text-xl mt-1"></i>
+                            <div>
+                                <p class="font-semibold text-white">Phone</p>
+                                <a href="tel:9765660867" class="text-sm hover:text-red-500 transition-colors">9765660867</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="ri-mail-line text-red-500 text-xl mt-1"></i>
+                            <div>
+                                <p class="font-semibold text-white">Email</p>
+                                <a href="mailto:retronepal74@gmail.com" class="text-sm hover:text-red-500 transition-colors break-all">retronepal74@gmail.com</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
-        <div class = "bg-black text-white text-center py-5">
-            <p class="text-lg font-semibold tracking-wide">
-                &copy; 2025 <span class="text-orange-400">RetroKits Nepal</span>. All rights reserved.<br>
-                <span class="text-gray-300">Theme by</span>
-                <a href="#" class="font-bold text-orange-500 underline hover:text-orange-300 transition-colors duration-200">Pradip Khanal</a>
-                <span class="block text-sm text-gray-400 mt-1">Please refrain from using it for commercial purposes.</span>
-            </p>
+        <!-- Payment Methods & Trust Badges -->
+        <div class="border-t border-gray-800">
+            <div class="container mx-auto px-6 lg:px-12 py-6">
+                <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400">
+                    <div class="flex items-center gap-2">
+                        <i class="ri-shield-check-line text-green-500 text-xl"></i>
+                        <span>100% Authentic</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="ri-truck-line text-blue-500 text-xl"></i>
+                        <span>Fast Delivery</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="ri-lock-line text-yellow-500 text-xl"></i>
+                        <span>Secure Payment</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="ri-customer-service-2-line text-purple-500 text-xl"></i>
+                        <span>24/7 Support</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
+        <!-- Bottom Bar -->
+        <div class="bg-black text-gray-400">
+            <div class="container mx-auto px-6 lg:px-12 py-6">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+                    <p class="text-center md:text-left">
+                        &copy; {{ date('Y') }} <span class="text-red-500 font-semibold">RetroKits Nepal</span>. All rights reserved.
+                    </p>
+                    <p class="text-center">
+                        Designed & Developed by
+                        <a href="#" class="text-red-500 hover:text-red-400 font-semibold transition-colors">Pradip Khanal</a>
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                        <span>|</span>
+                        <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-red-600 to-yellow-500 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 z-50 hidden items-center justify-center">
+        <i class="ri-arrow-up-line text-xl"></i>
+    </button>
+
+    <!-- Scripts -->
     <script>
-        function toggleMenu() {
-            let menu = document.getElementById('mob-menu');
-            if (menu.classList.contains('hidden'))
-             {
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+
+            if (menu.classList.contains('hidden')) {
                 menu.classList.remove('hidden');
-                menu.classList.add('grid');
+                icon.classList.remove('ri-menu-3-line');
+                icon.classList.add('ri-close-line');
             } else {
                 menu.classList.add('hidden');
-                menu.classList.remove('grid');
+                icon.classList.remove('ri-close-line');
+                icon.classList.add('ri-menu-3-line');
             }
         }
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+                backToTopButton.classList.add('flex');
+            } else {
+                backToTopButton.classList.add('hidden');
+                backToTopButton.classList.remove('flex');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const menu = document.getElementById('mobileMenu');
+            const menuButton = document.querySelector('[onclick="toggleMobileMenu()"]');
+
+            if (!menu.contains(e.target) && !menuButton.contains(e.target) && !menu.classList.contains('hidden')) {
+                toggleMobileMenu();
+            }
+        });
+
+        // Active link highlighting
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll('nav a');
+
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('text-red-600');
+            }
+        });
     </script>
 </body>
 
