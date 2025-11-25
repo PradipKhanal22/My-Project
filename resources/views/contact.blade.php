@@ -24,10 +24,6 @@
                     <i class="ri-message-3-line text-xl"></i>
                     <span>Send Message</span>
                 </a>
-                <a href="{{ route('contactinfo') }}" class="inline-flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full border-2 border-white/30 hover:bg-white hover:text-gray-900 transition-all duration-300">
-                    <i class="ri-contacts-line text-xl"></i>
-                    <span>Press Contact</span>
-                </a>
             </div>
         </div>
     </div>

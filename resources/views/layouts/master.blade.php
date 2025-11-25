@@ -82,7 +82,7 @@
 
                 <!-- Desktop Navigation -->
                 <div class="hidden lg:flex items-center gap-2">
-                    <a href="{{ route('home') }}" class="px-6 py-2.5 text-gray-800 hover:text-white hover:bg-gradient-to-r hover:from-red-600 hover:to-red-500 font-semibold rounded-lg transition-all duration-300 relative overflow-hidden group">
+                    <a href="{{ route('home') }}" class="px-6 py-2.5 {{ request()->routeIs('home') ? 'bg-red-600 text-white' : 'text-gray-800 hover:text-white' }} hover:bg-gradient-to-r hover:from-red-600 hover:to-red-500 font-semibold rounded-lg transition-all duration-300 relative overflow-hidden group">
                         <span class="relative z-10 flex items-center gap-2">
                             <i class="ri-home-5-line"></i>
                             Home
@@ -93,7 +93,7 @@
                         $categories = App\models\Category::orderBy('priority')->get();
                     @endphp
                     @foreach ($categories as $category)
-                        <a href="{{ route('categoryproduct', $category->id) }}" class="px-6 py-2.5 text-gray-800 hover:text-white hover:bg-gradient-to-r hover:from-red-600 hover:to-red-500 font-semibold rounded-lg transition-all duration-300 relative overflow-hidden group">
+                        <a href="{{ route('categoryproduct', $category->id) }}" class="px-6 py-2.5 {{ request()->routeIs('categoryproduct') && request()->route('id') == $category->id ? 'bg-red-600 text-white' : 'text-gray-800 hover:text-white' }} hover:bg-gradient-to-r hover:from-red-600 hover:to-red-500 font-semibold rounded-lg transition-all duration-300 relative overflow-hidden group">
                             <span class="relative z-10 flex items-center gap-2">
                                 <i class="ri-shirt-line"></i>
                                 {{ $category->name }}
@@ -151,20 +151,20 @@
                 </form>
 
                 <!-- Mobile Menu Links -->
-                <a href="{{ route('home') }}" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-red-50 hover:to-yellow-50 hover:text-red-600 rounded-xl font-semibold transition-all">
+                <a href="{{ route('home') }}" class="flex items-center gap-3 px-4 py-3 {{ request()->routeIs('home') ? 'bg-red-600 text-white' : 'text-gray-700 hover:text-red-600' }} hover:bg-gradient-to-r hover:from-red-50 hover:to-yellow-50 rounded-xl font-semibold transition-all">
                     <i class="ri-home-3-fill text-xl"></i>
                     <span>Home</span>
                 </a>
 
                 @foreach ($categories as $category)
-                    <a href="{{ route('categoryproduct', $category->id) }}" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-red-50 hover:to-yellow-50 hover:text-red-600 rounded-xl font-semibold transition-all">
+                    <a href="{{ route('categoryproduct', $category->id) }}" class="flex items-center gap-3 px-4 py-3 {{ request()->routeIs('categoryproduct') && request()->route('id') == $category->id ? 'bg-red-600 text-white' : 'text-gray-700 hover:text-red-600' }} hover:bg-gradient-to-r hover:from-red-50 hover:to-yellow-50 rounded-xl font-semibold transition-all">
                         <i class="ri-shirt-line text-xl"></i>
                         <span>{{ $category->name }}</span>
                     </a>
                 @endforeach
 
                 @auth
-                    <a href="{{ route('userprofile.edit') }}" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-red-50 hover:to-yellow-50 hover:text-red-600 rounded-xl font-semibold transition-all">
+                    <a href="{{ route('userprofile.edit') }}" class="flex items-center gap-3 px-4 py-3 {{ request()->routeIs('userprofile.edit') ? 'bg-red-600 text-white' : 'text-gray-700 hover:text-red-600' }} hover:bg-gradient-to-r hover:from-red-50 hover:to-yellow-50 rounded-xl font-semibold transition-all">
                         <i class="ri-user-line text-xl"></i>
                         <span>My Profile</span>
                     </a>

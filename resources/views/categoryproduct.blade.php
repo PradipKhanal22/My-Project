@@ -49,150 +49,171 @@
     </div>
 </div>
 
-<!-- Products Section -->
-<section class="py-16 bg-gradient-to-b from-white to-gray-50">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-20">
-        <!-- Filter & Sort Bar -->
-        <div class="flex flex-col sm:flex-row justify-between items-center mb-12 gap-4 bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-            <div class="flex items-center gap-3 text-gray-700">
-                <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
-                    <i class="ri-filter-3-line text-xl text-red-600"></i>
-                </div>
-                <div>
-                    <p class="text-sm text-gray-500">Results</p>
-                    <p class="font-bold text-lg">{{ $products->count() }} Products</p>
-                </div>
-            </div>
-
-            <div class="flex items-center gap-3">
-                <label for="sort" class="text-gray-700 font-semibold flex items-center gap-2">
-                    <i class="ri-sort-desc text-xl"></i>
-                    Sort By:
-                </label>
-                <select id="sort" class="px-5 py-2.5 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-red-600 bg-white cursor-pointer hover:border-gray-300 transition-all font-medium text-gray-700">
-                    <option>Latest</option>
-                    <option>Price: Low to High</option>
-                    <option>Price: High to Low</option>
-                    <option>Name: A to Z</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- Products Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Products Section - Modern Wide Cards -->
+<section class="py-20 bg-gradient-to-b from-gray-50 via-white to-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-16">
+        <!-- Products Grid - 3 Columns with Wider Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
             @foreach ($products as $product)
-            <div class="group relative bg-white rounded-3xl shadow-md hover:shadow-2xl transition-all duration-500 overflow-hidden border-2 border-gray-100 hover:border-red-300 transform hover:-translate-y-3">
+                <div class="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-transparent transform hover:-translate-y-4">
+                    <!-- Image Container -->
+                    <div class="relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
+                        <a href="{{ route('viewproduct', $product->id) }}" class="block">
+                            <div class="aspect-[4/5] relative">
+                                <img src="{{ asset('images/' . $product->photopath) }}"
+                                     alt="{{ $product->name }}"
+                                     class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
 
-                <!-- Product Image Container -->
-                <a href="{{ route('viewproduct', $product->id) }}" class="block relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
-                    <div class="aspect-[4/5] overflow-hidden">
-                        <img src="{{ asset('images/' . $product->photopath) }}"
-                             alt="{{ $product->name }}"
-                             class="w-full h-full object-cover group-hover:scale-110 group-hover:rotate-2 transition-all duration-700">
-                    </div>
-
-                    <!-- Gradient Overlay on Hover -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400">
-                        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 w-full px-4">
-                            <div class="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-900 font-bold rounded-full text-sm shadow-xl w-full justify-center">
-                                <i class="ri-eye-line text-lg"></i>
-                                <span>Quick View</span>
+                                <!-- Hover Overlay -->
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end justify-center pb-8">
+                                    <div class="px-8 py-4 bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl border border-white/50">
+                                        <div class="flex items-center gap-3 text-gray-900 font-bold">
+                                            <i class="ri-eye-line text-xl"></i>
+                                            <span>Quick View</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Badges -->
-                    <div class="absolute top-3 left-3 flex flex-col gap-2">
-                        <span class="inline-block px-3 py-1.5 bg-gradient-to-r from-red-600 to-red-500 text-white text-xs font-bold rounded-full shadow-lg backdrop-blur-sm">
-                            NEW ARRIVAL
-                        </span>
-                    </div>
-
-                    <!-- Wishlist Button -->
-                    <button onclick="event.preventDefault();" class="absolute top-3 right-3 w-11 h-11 bg-white/95 hover:bg-red-600 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 group/heart backdrop-blur-sm hover:scale-110">
-                        <i class="ri-heart-line text-gray-700 group-hover/heart:text-white transition-colors text-lg"></i>
-                    </button>
-                </a>
-
-                <!-- Product Details -->
-                <div class="p-5">
-                    <!-- Category & Stock Status -->
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="inline-block px-3 py-1 bg-gradient-to-r from-gray-100 to-gray-50 text-gray-700 text-xs font-bold rounded-full border border-gray-200">
-                            {{ $category->name }}
-                        </span>
-                        <span class="inline-flex items-center gap-1 text-xs text-green-600 font-semibold">
-                            <i class="ri-check-line"></i>
-                            In Stock
-                        </span>
-                    </div>
-
-                    <!-- Product Name -->
-                    <a href="{{ route('viewproduct', $product->id) }}">
-                        <h2 class="text-base font-extrabold text-gray-900 group-hover:text-red-600 transition-colors duration-300 line-clamp-2 mb-3 leading-snug min-h-[2.5rem]">
-                            {{ $product->name }}
-                        </h2>
-                    </a>
-
-                    <!-- Product Description -->
-                    <p class="text-gray-600 text-xs leading-relaxed line-clamp-2 mb-4 min-h-[2.5rem]">
-                        {{ $product->description }}
-                    </p>
-
-                    <!-- Rating & Reviews -->
-                    <div class="flex items-center justify-between mb-4 pb-4 border-b border-gray-100">
-                        <div class="flex items-center gap-1">
-                            <div class="flex text-yellow-400">
-                                <i class="ri-star-fill text-sm"></i>
-                                <i class="ri-star-fill text-sm"></i>
-                                <i class="ri-star-fill text-sm"></i>
-                                <i class="ri-star-fill text-sm"></i>
-                                <i class="ri-star-half-fill text-sm"></i>
-                            </div>
-                            <span class="text-xs text-gray-600 ml-1 font-semibold">4.5</span>
-                        </div>
-                        <span class="text-xs text-gray-500">(127 reviews)</span>
-                    </div>
-
-                    <!-- Price and CTA -->
-                    <div class="flex items-end justify-between gap-3">
-                        <div class="flex-1">
-                            <p class="text-xs text-gray-500 mb-1 font-medium">Price</p>
-                            <div class="flex items-baseline gap-2">
-                                <span class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-500">
-                                    Rs. {{ number_format($product->price) }}
-                                </span>
-                            </div>
-                        </div>
-                        <a href="{{ route('viewproduct', $product->id) }}" class="group/btn flex-shrink-0 bg-gradient-to-r from-red-600 via-red-500 to-red-600 text-white px-5 py-3 rounded-xl hover:from-red-700 hover:via-red-600 hover:to-red-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center gap-2 font-bold text-sm">
-                            <i class="ri-shopping-cart-line text-lg group-hover/btn:animate-bounce"></i>
-                            <span class="hidden sm:inline">Add</span>
                         </a>
+
+                        <!-- Badges -->
+                        <div class="absolute top-4 left-4 flex flex-col gap-2">
+                            <span class="px-4 py-1.5 bg-gradient-to-r from-red-600 to-pink-600 text-white text-xs font-bold rounded-full shadow-lg">
+                                NEW
+                            </span>
+                            @if($product->discount > 0)
+                                <span class="px-4 py-1.5 bg-gradient-to-r from-emerald-500 to-teal-600 text-white text-xs font-bold rounded-full shadow-lg">
+                                    -{{ $product->discount }}%
+                                </span>
+                            @endif
+                        </div>
+                        @once
+                        <script>
+                            if (!window.toggleWishlistDefined) {
+                                window.toggleWishlistDefined = true;
+
+                                async function toggleWishlist(productId) {
+                                    const btn = document.getElementById('wishlist-btn-' + productId);
+                                    const icon = document.getElementById('wishlist-icon-' + productId);
+                                    const url = "{{ route('wishlist.store') }}"; // create route POST /wishlist/toggle
+                                    const token = '{{ csrf_token() }}';
+
+                                    if (!btn || !icon) return;
+
+                                    btn.disabled = true;
+
+                                    try {
+                                        const res = await fetch(url, {
+                                            method: 'POST',
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                                'X-CSRF-TOKEN': token,
+                                                'Accept': 'application/json'
+                                            },
+                                            body: JSON.stringify({ product_id: productId })
+                                        });
+
+                                        const data = await res.json();
+
+                                        if (!res.ok) throw new Error(data.message || 'Request failed');
+
+                                        // Expecting JSON: { added: true } when added, { added: false } when removed
+                                        if (data.added) {
+                                            icon.classList.remove('ri-heart-line');
+                                            icon.classList.add('ri-heart-fill', 'text-white');
+                                            btn.classList.add('bg-red-500', 'text-white');
+                                            btn.setAttribute('aria-pressed', 'true');
+                                        } else {
+                                            icon.classList.remove('ri-heart-fill', 'text-white');
+                                            icon.classList.add('ri-heart-line');
+                                            btn.classList.remove('bg-red-500', 'text-white');
+                                            btn.setAttribute('aria-pressed', 'false');
+                                        }
+                                    } catch (err) {
+                                        console.error(err);
+                                        alert('Could not update wishlist. Please try again.');
+                                    } finally {
+                                        btn.disabled = false;
+                                    }
+                                }
+                            }
+                        </script>
+                        @endonce
                     </div>
+
+                    <!-- Card Content -->
+                    <div class="p-8 space-y-4">
+                        <!-- Category -->
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                {{ $product->category->name ?? 'Uncategorized' }}
+                            </span>
+                            <span class="flex items-center gap-1 text-xs text-emerald-600 font-bold">
+                                <i class="ri-check-double-line"></i> In Stock
+                            </span>
+                        </div>
+
+                        <!-- Title -->
+                        <a href="{{ route('viewproduct', $product->id) }}" class="block">
+                            <h3 class="text-lg font-extrabold text-gray-900 line-clamp-2 leading-tight hover:text-red-600 transition-colors">
+                                {{ $product->name }}
+                            </h3>
+                        </a>
+
+                        <!-- Short Description -->
+                        <p class="text-sm text-gray-600 line-clamp-2 leading-relaxed">
+                            {{ Str::limit($product->description, 80) }}
+                        </p>
+
+                        <!-- Rating -->
+                        <div class="flex items-center gap-2">
+                            <div class="flex text-amber-400">
+                                @for($i = 1; $i <= 5; $i++)
+                                    <i class="ri-star-fill text-xs {{ $i <= 4.5 ? '' : 'text-gray-300' }}"></i>
+                                @endfor
+                            </div>
+                            <span class="text-xs font-semibold text-gray-600">4.8</span>
+                            <span class="text-xs text-gray-400">(127)</span>
+                        </div>
+
+                        <!-- Price & CTA -->
+                        <div class="flex items-center justify-between pt-3">
+                            <div>
+                                @if($product->old_price)
+                                    <p class="text-sm text-gray-500 line-through">Rs. {{ number_format($product->old_price) }}</p>
+                                @endif
+                                <p class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pink-600">
+                                    Rs. {{ number_format($product->price) }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Shine Effect -->
+                    <div class="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000"></div>
+                    </div>
+
+                    <!-- Subtle Glow Border -->
+                    <div class="absolute inset-0 rounded-3xl ring-4 ring-transparent group-hover:ring-red-400/20 transition-all duration spontaneous-500 pointer-events-none"></div>
                 </div>
-
-                <!-- Enhanced Shine Effect -->
-                <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 pointer-events-none"></div>
-
-                <!-- Border Glow Effect -->
-                <div class="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="box-shadow: inset 0 0 20px rgba(220, 38, 38, 0.2);"></div>
-            </div>
             @endforeach
         </div>
 
         <!-- Empty State -->
         @if($products->isEmpty())
-        <div class="text-center py-20">
-            <div class="inline-flex items-center justify-center w-32 h-32 bg-gradient-to-br from-red-50 to-yellow-50 rounded-full mb-6 shadow-inner">
-                <i class="ri-shopping-bag-line text-6xl text-red-400"></i>
+            <div class="text-center py-32">
+                <div class="w-40 h-40 mx-auto mb-8 bg-gradient-to-br from-red-100 to-pink-100 rounded-full flex items-center justify-center shadow-2xl">
+                    <i class="ri-inbox-line text-8xl text-red-300"></i>
+                </div>
+                <h2 class="text-4xl font-black text-gray-900 mb-4">No Products Found</h2>
+                <p class="text-xl text-gray-600 mb-10 max-w-lg mx-auto">Looks like we're fresh out in this category. Check back soon for new drops!</p>
+                <a href="{{ route('products') }}"
+                   class="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-red-600 to-pink-600 text-white font-bold text-lg rounded-full shadow-2xl hover:shadow-red-600/50 transform hover:scale-105 transition-all">
+                    <i class="ri-arrow-left-line"></i>
+                    Explore All Collections
+                </a>
             </div>
-            <h3 class="text-3xl font-extrabold text-gray-900 mb-3">No Products Found</h3>
-            <p class="text-gray-600 mb-8 text-lg max-w-md mx-auto">We couldn't find any products in this category. Try exploring other collections!</p>
-            <a href="{{ route('products') }}" class="inline-flex items-center gap-3 bg-gradient-to-r from-red-600 to-yellow-500 text-white font-bold px-10 py-4 rounded-full hover:shadow-2xl transform hover:scale-105 transition-all shadow-lg">
-                <i class="ri-arrow-left-line text-xl"></i>
-                <span>Browse All Products</span>
-            </a>
-        </div>
         @endif
     </div>
 </section>
