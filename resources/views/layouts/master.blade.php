@@ -338,7 +338,7 @@
                     </p>
                     <p class="text-center">
                         Designed & Developed by
-                        <a href="#" class="text-red-500 hover:text-red-400 font-semibold transition-colors">Pradip Khanal</a>
+                        <a href="https://pradipkhanal25.com.np/" class="text-red-500 hover:text-red-400 font-semibold transition-colors">Pradip Khanal</a>
                     </p>
                     <div class="flex gap-4">
                         <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
