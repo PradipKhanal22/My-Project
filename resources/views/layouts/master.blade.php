@@ -73,17 +73,17 @@
 
     <!-- Main Navigation -->
     <nav class="bg-white shadow-md sticky top-10 z-40 border-b border-gray-100">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
-                <a href="{{ route('home') }}" class="flex items-center group">
-                    <img src="{{ asset('logo1.png') }}" alt="RetroKits Nepal" class="h-16 w-auto transition-all duration-300 group-hover:scale-110 drop-shadow-md">
+                <a href="{{ route('home') }}" class="flex items-center group flex-shrink-0">
+                    <img src="{{ asset('logo1.png') }}" alt="RetroKits Nepal" class="h-12 w-auto transition-all duration-300 group-hover:scale-110 drop-shadow-md">
                 </a>
 
                 <!-- Desktop Navigation -->
-                <div class="hidden lg:flex items-center gap-2">
-                    <a href="{{ route('home') }}" class="px-6 py-2.5 {{ request()->routeIs('home') ? 'bg-red-600 text-white' : 'text-gray-800 hover:text-white' }} hover:bg-gradient-to-r hover:from-red-600 hover:to-red-500 font-semibold rounded-lg transition-all duration-300 relative overflow-hidden group">
-                        <span class="relative z-10 flex items-center gap-2">
+                <div class="hidden lg:flex items-center gap-1 flex-1 justify-center">
+                    <a href="{{ route('home') }}" class="px-4 py-2.5 {{ request()->routeIs('home') ? 'bg-red-600 text-white' : 'text-gray-800 hover:text-white' }} hover:bg-gradient-to-r hover:from-red-600 hover:to-red-500 font-semibold rounded-lg transition-all duration-300 relative overflow-hidden group">
+                        <span class="relative z-10 flex items-center gap-1.5 text-sm">
                             <i class="ri-home-5-line"></i>
                             Home
                         </span>
@@ -93,8 +93,8 @@
                         $categories = App\models\Category::orderBy('priority')->get();
                     @endphp
                     @foreach ($categories as $category)
-                        <a href="{{ route('categoryproduct', $category->id) }}" class="px-6 py-2.5 {{ request()->routeIs('categoryproduct') && request()->route('id') == $category->id ? 'bg-red-600 text-white' : 'text-gray-800 hover:text-white' }} hover:bg-gradient-to-r hover:from-red-600 hover:to-red-500 font-semibold rounded-lg transition-all duration-300 relative overflow-hidden group">
-                            <span class="relative z-10 flex items-center gap-2">
+                        <a href="{{ route('categoryproduct', $category->id) }}" class="px-4 py-2.5 {{ request()->routeIs('categoryproduct') && request()->route('id') == $category->id ? 'bg-red-600 text-white' : 'text-gray-800 hover:text-white' }} hover:bg-gradient-to-r hover:from-red-600 hover:to-red-500 font-semibold rounded-lg transition-all duration-300 relative overflow-hidden group">
+                            <span class="relative z-10 flex items-center gap-1.5 text-sm">
                                 <i class="ri-shirt-line"></i>
                                 {{ $category->name }}
                             </span>
@@ -103,23 +103,23 @@
                 </div>
 
                 <!-- Search Bar & User Profile -->
-                <div class="hidden lg:flex items-center gap-4">
+                <div class="hidden lg:flex items-center gap-3 flex-shrink-0">
                     <form action="{{ route('search') }}" method="GET" class="relative group">
                         <input type="search"
-                               placeholder="Search products..."
-                               class="pl-5 pr-12 py-2.5 border-2 border-gray-200 rounded-full focus:outline-none focus:border-red-600 focus:shadow-lg transition-all w-72 bg-gray-50 focus:bg-white"
+                               placeholder="Search..."
+                               class="pl-4 pr-11 py-2.5 border-2 border-gray-200 rounded-full focus:outline-none focus:border-red-600 focus:shadow-lg transition-all w-52 bg-gray-50 focus:bg-white text-sm"
                                name="qry"
                                value="{{ request()->qry }}"
                                minlength="2"
                                required>
-                        <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 bg-gradient-to-r from-red-600 to-red-500 text-white w-8 h-8 rounded-full hover:from-red-700 hover:to-red-600 transition-all flex items-center justify-center shadow-md">
-                            <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                        <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 bg-gradient-to-r from-red-600 to-red-500 text-white w-7 h-7 rounded-full hover:from-red-700 hover:to-red-600 transition-all flex items-center justify-center shadow-md">
+                            <i class="fa-solid fa-magnifying-glass text-xs"></i>
                         </button>
                     </form>
 
                     @auth
-                        <a href="{{ route('userprofile.edit') }}" class="group relative">
-                            <img src="{{ asset('avatar.jpg') }}" alt="User Avatar" class="w-11 h-11 rounded-full shadow-md group-hover:shadow-xl transition-all border-2 border-gray-200 group-hover:border-red-600 ring-2 ring-transparent group-hover:ring-red-100">
+                        <a href="{{ route('userprofile.edit') }}" class="group relative flex-shrink-0">
+                            <img src="{{ asset('avatar.jpg') }}" alt="User Avatar" class="w-10 h-10 rounded-full shadow-md group-hover:shadow-xl transition-all border-2 border-gray-200 group-hover:border-red-600 ring-2 ring-transparent group-hover:ring-red-100">
                         </a>
                     @endauth
                 </div>
